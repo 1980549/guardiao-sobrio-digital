@@ -44,6 +44,12 @@ export const Header = () => {
                 {item.label}
               </Link>
             ))}
+            <Link
+              to="/app"
+              className="tactical-button text-sm py-2 px-4"
+            >
+              Abrir App
+            </Link>
           </nav>
 
           {/* Mobile Menu Button */}
