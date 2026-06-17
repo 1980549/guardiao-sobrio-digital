@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { ShieldIcon } from "@/components/ShieldIcon";
-import { ArrowRight, Eye, Home, Shield } from "lucide-react";
+import { ArrowRight, Eye, Home, Shield, ExternalLink } from "lucide-react";
 
 const Sobre = () => {
   return (
@@ -14,42 +14,54 @@ const Sobre = () => {
             <h1 className="font-display text-4xl md:text-5xl text-foreground mb-4">
               Sobre o Guardião Sóbrio
             </h1>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-lg text-muted-foreground mb-3">
               Não sou guru. Não sou terapeuta. Sou alguém que atravessou.
             </p>
+            {/* Ancora humana */}
+            <p className="text-primary font-display text-xl font-semibold">Luis Vanzer Gonçalves</p>
+            <a
+              href="https://www.tiktok.com/@luisvanzer"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors mt-1"
+            >
+              @luisvanzer no TikTok
+              <ExternalLink size={12} />
+            </a>
           </div>
         </div>
       </section>
-
       <div className="section-divider" />
-
       {/* Story — par */}
       <section className="py-16 md:py-24 section-alt">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto space-y-6">
             <div className="tactical-border">
               <p className="text-muted-foreground leading-relaxed">
-                Conheci a vontade de beber por dentro. Sei como ela negocia, como ela disfarça, 
+                Conheci a vontade de beber por dentro. Sei como ela negocia, como ela disfarça,
                 como ela convence. Sei porque já caí nessa conversa muitas vezes.
               </p>
             </div>
-
+            {/* Bloco trincheira */}
+            <div className="tactical-card border-l-2 border-primary">
+              <p className="text-muted-foreground leading-relaxed italic">
+                "Comecei esse projeto com 60 dias de sobriedade. Não escrevo do outro lado da montanha
+                — escrevo da trilha. Isso muda o que eu ofereço."
+              </p>
+            </div>
             <p className="text-muted-foreground leading-relaxed">
-              O que ofereço aqui não é a promessa de uma cura milagrosa. Não existe isso. 
-              O que existe é estratégia—método, sistema, proteção. A mesma coisa que me 
+              O que ofereço aqui não é a promessa de uma cura milagrosa. Não existe isso.
+              O que existe é estratégia—método, sistema, proteção. A mesma coisa que me
               ajudou a atravessar os dias mais difíceis.
             </p>
-
             <p className="text-muted-foreground leading-relaxed">
-              O nome "Guardião" não é por acaso. Minha função não é comandar sua vida. 
+              O nome "Guardião" não é por acaso. Minha função não é comandar sua vida.
               É ajudar você a proteger o que importa: sua sobriedade, sua família, sua sanidade.
             </p>
           </div>
         </div>
       </section>
-
       <div className="section-divider" />
-
       {/* What I Am / What I'm Not — ímpar */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
@@ -65,7 +77,6 @@ const Sobre = () => {
                 <li>• Honesto sobre limitações e realidades</li>
               </ul>
             </div>
-            
             <div className="tactical-card">
               <h2 className="font-display text-xl text-foreground mb-4 text-destructive">
                 O que não sou
@@ -80,9 +91,7 @@ const Sobre = () => {
           </div>
         </div>
       </section>
-
       <div className="section-divider" />
-
       {/* Three Pillars — par */}
       <section className="py-16 md:py-24 section-alt">
         <div className="container mx-auto px-4">
@@ -90,39 +99,30 @@ const Sobre = () => {
             <h2 className="font-display text-2xl text-foreground mb-8 text-center">
               Os Três Pilares
             </h2>
-            
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="tactical-card text-center">
                 <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
                   <Eye size={28} className="text-primary" />
                 </div>
-                <h3 className="font-display text-lg text-foreground mb-2">
-                  Espelho da Verdade
-                </h3>
+                <h3 className="font-display text-lg text-foreground mb-2">Espelho da Verdade</h3>
                 <p className="text-sm text-muted-foreground">
                   Honestidade sem destruição. A verdade que reconstrói, não a que ataca.
                 </p>
               </div>
-              
               <div className="tactical-card text-center">
                 <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
                   <Home size={28} className="text-primary" />
                 </div>
-                <h3 className="font-display text-lg text-foreground mb-2">
-                  Bunker
-                </h3>
+                <h3 className="font-display text-lg text-foreground mb-2">Bunker</h3>
                 <p className="text-sm text-muted-foreground">
                   Proteção do ambiente e da rotina. O espaço seguro que permite atravessar.
                 </p>
               </div>
-              
               <div className="tactical-card text-center">
                 <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
                   <Shield size={28} className="text-primary" />
                 </div>
-                <h3 className="font-display text-lg text-foreground mb-2">
-                  Escudo da Família
-                </h3>
+                <h3 className="font-display text-lg text-foreground mb-2">Escudo da Família</h3>
                 <p className="text-sm text-muted-foreground">
                   Proteger quem depende de você. Limites que preservam, não que destroem.
                 </p>
@@ -131,9 +131,7 @@ const Sobre = () => {
           </div>
         </div>
       </section>
-
       <div className="section-divider" />
-
       {/* CTA — ímpar */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
@@ -142,7 +140,7 @@ const Sobre = () => {
               O caminho não é fácil. Mas existe. E você pode atravessar.
             </p>
             <Link to="/comece-aqui" className="tactical-button inline-flex items-center gap-2">
-              Comece por aqui
+              COMEÇAR AGORA
               <ArrowRight size={18} />
             </Link>
           </div>
@@ -151,5 +149,4 @@ const Sobre = () => {
     </Layout>
   );
 };
-
 export default Sobre;
