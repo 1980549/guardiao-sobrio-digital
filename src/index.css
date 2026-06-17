@@ -2,82 +2,86 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600,700&display=swap');
 
 @layer base {
   :root {
-    /* Noir Realista - Guardião Sóbrio */
-    --background: 222 47% 11%;
-    --foreground: 210 40% 98%;
+    /* Noir Realista - Guardião Sóbrio (carvão quente) */
+    --background: 30 8% 5%;        /* #0e0d0c */
+    --foreground: 40 15% 92%;
 
-    --card: 222 47% 14%;
-    --card-foreground: 210 40% 98%;
+    --card: 30 6% 8%;              /* surface alt */
+    --card-foreground: 40 15% 92%;
 
-    --popover: 222 47% 14%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 30 6% 8%;
+    --popover-foreground: 40 15% 92%;
 
-    --primary: 32 95% 44%;
-    --primary-foreground: 222 47% 11%;
+    --primary: 44 53% 54%;         /* #c8a84b ouro fosco */
+    --primary-foreground: 30 8% 5%;
 
-    --secondary: 222 47% 18%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 40 6% 10%;        /* #1a1917 surface */
+    --secondary-foreground: 40 15% 92%;
 
-    --muted: 222 47% 20%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 40 6% 10%;
+    --muted-foreground: 40 8% 62%;
 
-    --accent: 32 95% 44%;
-    --accent-foreground: 222 47% 11%;
+    --accent: 44 53% 54%;
+    --accent-foreground: 30 8% 5%;
 
-    --destructive: 0 72% 35%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 27 75% 52%;     /* #e07b2a âmbar SOS */
+    --destructive-foreground: 30 8% 5%;
 
-    --border: 222 47% 22%;
-    --input: 222 47% 22%;
-    --ring: 32 95% 44%;
+    --border: 0 0% 100%;           /* used with /8 opacity via tokens below */
+    --input: 40 6% 14%;
+    --ring: 44 53% 54%;
 
     --radius: 0.5rem;
 
     /* Custom Guardião Sóbrio tokens */
-    --gs-bunker: 222 47% 11%;
-    --gs-bunker-light: 222 47% 16%;
-    --gs-tactical: 32 95% 44%;
-    --gs-tactical-hover: 32 95% 50%;
-    --gs-alert: 0 72% 35%;
-    --gs-steel: 215 20% 65%;
-    --gs-light: 210 40% 98%;
+    --gs-bunker: 30 8% 5%;
+    --gs-bunker-light: 30 6% 8%;
+    --gs-tactical: 44 53% 54%;
+    --gs-tactical-hover: 44 53% 60%;
+    --gs-alert: 27 75% 52%;
+    --gs-steel: 40 8% 62%;
+    --gs-light: 40 15% 92%;
     --gs-shield-opacity: 0.03;
 
-    --sidebar-background: 222 47% 11%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 32 95% 44%;
-    --sidebar-primary-foreground: 222 47% 11%;
-    --sidebar-accent: 222 47% 18%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 222 47% 22%;
-    --sidebar-ring: 32 95% 44%;
+    --sidebar-background: 30 8% 5%;
+    --sidebar-foreground: 40 15% 92%;
+    --sidebar-primary: 44 53% 54%;
+    --sidebar-primary-foreground: 30 8% 5%;
+    --sidebar-accent: 40 6% 10%;
+    --sidebar-accent-foreground: 40 15% 92%;
+    --sidebar-border: 0 0% 100%;
+    --sidebar-ring: 44 53% 54%;
   }
 
   .dark {
-    --background: 222 47% 11%;
-    --foreground: 210 40% 98%;
-    --card: 222 47% 14%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222 47% 14%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 32 95% 44%;
-    --primary-foreground: 222 47% 11%;
-    --secondary: 222 47% 18%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 222 47% 20%;
-    --muted-foreground: 215 20% 65%;
-    --accent: 32 95% 44%;
-    --accent-foreground: 222 47% 11%;
-    --destructive: 0 72% 35%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 222 47% 22%;
-    --input: 222 47% 22%;
-    --ring: 32 95% 44%;
+    --background: 30 8% 5%;
+    --foreground: 40 15% 92%;
+    --card: 30 6% 8%;
+    --card-foreground: 40 15% 92%;
+    --popover: 30 6% 8%;
+    --popover-foreground: 40 15% 92%;
+    --primary: 44 53% 54%;
+    --primary-foreground: 30 8% 5%;
+    --secondary: 40 6% 10%;
+    --secondary-foreground: 40 15% 92%;
+    --muted: 40 6% 10%;
+    --muted-foreground: 40 8% 62%;
+    --accent: 44 53% 54%;
+    --accent-foreground: 30 8% 5%;
+    --destructive: 27 75% 52%;
+    --destructive-foreground: 30 8% 5%;
+    --border: 0 0% 100%;
+    --input: 40 6% 14%;
+    --ring: 44 53% 54%;
   }
+
+  /* Default border uses subtle white at 8% */
+  * { border-color: rgba(255, 255, 255, 0.08); }
 }
 
 @layer base {
@@ -160,12 +164,12 @@
   }
 
   .section-alt {
-    background-color: hsl(214 45% 13%);
+    background-color: #141312;
   }
 
   .section-divider {
     height: 1px;
     width: 100%;
-    background-color: rgba(217, 119, 6, 0.15);
+    background-color: rgba(255, 255, 255, 0.08);
   }
 }
