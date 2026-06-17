@@ -1,12 +1,17 @@
 import { Layout } from "@/components/Layout";
 import { ShieldIcon } from "@/components/ShieldIcon";
-import { Book, Users, Crown, ArrowRight, AlertTriangle } from "lucide-react";
+import { Book, Users, Crown, ArrowRight, AlertTriangle, ExternalLink } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const produtos = [
   {
     id: "ebook",
     title: 'E-book "Protocolo do Escudo"',
     subtitle: "Manual 90 dias",
+    price: "R$ 47",
+    priceNote: "Pagamento único",
+    cta: "QUERO O E-BOOK",
+    ctaHref: "/contato",
     description: "O guia completo para os primeiros 90 dias de sobriedade. Protocolos diários, checklists, relatórios do front e estratégias para cada fase do processo.",
     icon: Book,
     features: [
@@ -20,6 +25,10 @@ const produtos = [
     id: "comunidade",
     title: 'Comunidade "A Base"',
     subtitle: "Discord privado",
+    price: "R$ 39,90/mês",
+    priceNote: "ou R$ 299/ano",
+    cta: "ENTRAR NA COMUNIDADE",
+    ctaHref: "/contato",
     description: "Espaço de suporte entre pares. Não é grupo de terapia—é trincheira compartilhada. Guardiões que entendem a batalha trocando experiências e estratégias.",
     icon: Users,
     features: [
@@ -33,6 +42,10 @@ const produtos = [
     id: "mentoria",
     title: 'Mentoria "Guardião de Elite"',
     subtitle: "Direção individual",
+    price: "R$ 997/mês",
+    priceNote: "Vagas limitadas",
+    cta: "QUERO A MENTORIA",
+    ctaHref: "/contato",
     description: "Acompanhamento personalizado para quem precisa de direção mais próxima. Não é plantão médico—é mentoria tática baseada em experiência prática.",
     icon: Crown,
     features: [
@@ -56,15 +69,13 @@ const Produtos = () => {
               Produtos
             </h1>
             <p className="text-lg text-muted-foreground">
-              Ferramentas táticas para fortalecer sua jornada. Cada produto foi desenhado 
+              Ferramentas táticas para fortalecer sua jornada. Cada produto foi desenhado
               para dar suporte prático—sem promessas vazias, sem teatro.
             </p>
           </div>
         </div>
       </section>
-
       <div className="section-divider" />
-
       {/* Products Grid — par */}
       <section className="py-16 md:py-24 section-alt">
         <div className="container mx-auto px-4">
@@ -74,16 +85,16 @@ const Produtos = () => {
                 <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-6">
                   <produto.icon size={28} className="text-primary" />
                 </div>
-                
+
                 <h2 className="font-display text-xl text-foreground mb-1">
                   {produto.title}
                 </h2>
                 <p className="text-sm text-primary mb-4">{produto.subtitle}</p>
-                
+
                 <p className="text-muted-foreground text-sm mb-6 flex-1">
                   {produto.description}
                 </p>
-                
+
                 <ul className="space-y-2 mb-6">
                   {produto.features.map((feature, index) => (
                     <li key={index} className="flex items-start gap-2 text-sm text-muted-foreground">
@@ -92,38 +103,37 @@ const Produtos = () => {
                     </li>
                   ))}
                 </ul>
-                
-                <button className="tactical-button-outline w-full mt-auto">
-                  Consultar informações
-                </button>
+
+                {/* Price Block */}
+                <div className="border-t border-border pt-4 mb-4">
+                  <p className="text-2xl font-display text-foreground font-bold">{produto.price}</p>
+                  <p className="text-xs text-muted-foreground mt-1">{produto.priceNote}</p>
+                </div>
+
+                <Link
+                  to={produto.ctaHref}
+                  className="tactical-button w-full mt-auto flex items-center justify-center gap-2 text-center"
+                >
+                  {produto.cta}
+                  <ExternalLink size={14} />
+                </Link>
               </div>
             ))}
           </div>
         </div>
       </section>
-
       <div className="section-divider" />
-
-      {/* Info Box & Disclaimer — ímpar */}
+      {/* Disclaimer — ímpar */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
-            <div className="tactical-card text-center mb-8">
-              <p className="text-muted-foreground mb-2">
-                <strong className="text-foreground">Detalhes e preço:</strong> consultar informações de produto.
-              </p>
-              <p className="text-sm text-muted-foreground">
-                Entre em contato para receber detalhes completos sobre cada produto.
-              </p>
-            </div>
-
             <div className="alert-box">
               <div className="flex items-start gap-3">
                 <AlertTriangle size={20} className="text-destructive flex-shrink-0 mt-0.5" />
                 <p className="text-sm text-muted-foreground">
-                  <strong className="text-foreground">Aviso importante:</strong> Os produtos do Guardião Sóbrio oferecem 
-                  orientação e suporte baseados em experiência prática. <strong>Não substituem acompanhamento médico, 
-                  psicológico ou psiquiátrico.</strong> A mentoria é direção tática, não plantão médico. Em caso de crise, 
+                  <strong className="text-foreground">Aviso importante:</strong> Os produtos do Guardião Sóbrio oferecem
+                  orientação e suporte baseados em experiência prática. <strong>Não substituem acompanhamento médico,
+                  psicológico ou psiquiátrico.</strong> A mentoria é direção tática, não plantão médico. Em caso de crise,
                   risco ou abstinência intensa, procure ajuda profissional imediatamente.
                 </p>
               </div>
