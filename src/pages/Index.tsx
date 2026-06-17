@@ -6,11 +6,10 @@ import { PathCard } from "@/components/PathCard";
 import { NewsletterCapture } from "@/components/NewsletterCapture";
 import { ShieldIcon } from "@/components/ShieldIcon";
 import { getRecentPosts } from "@/data/blogPosts";
-import { ArrowRight, RefreshCw, Flame, Heart } from "lucide-react";
+import { ArrowRight, Shield, Zap, Home } from "lucide-react";
 
 const Index = () => {
   const recentPosts = getRecentPosts(6);
-
   return (
     <Layout>
       {/* Hero Section — ímpar */}
@@ -20,15 +19,12 @@ const Index = () => {
             <div className="flex justify-center mb-8 opacity-0 animate-fade-in" style={{ animationDelay: "0.1s" }}>
               <ShieldIcon size="lg" />
             </div>
-            
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-6 opacity-0 animate-fade-in" style={{ animationDelay: "0.2s" }}>
               A verdade difícil que devolve a sua vida e a sua família.
             </h1>
-            
             <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto opacity-0 animate-fade-in" style={{ animationDelay: "0.3s" }}>
               Estratégia prática para atravessar a vontade de beber, proteger a minha casa e construir sobriedade sem teatro.
             </p>
-            
             <div className="flex flex-col sm:flex-row gap-4 justify-center opacity-0 animate-fade-in" style={{ animationDelay: "0.4s" }}>
               <Link to="/comece-aqui" className="tactical-button flex items-center justify-center gap-2">
                 Comece por aqui
@@ -41,41 +37,36 @@ const Index = () => {
           </div>
         </div>
       </section>
-
       <div className="section-divider" />
-
       {/* Path Cards Section — par */}
       <section className="py-16 md:py-24 section-alt">
         <div className="container mx-auto px-4">
           <h2 className="font-display text-2xl md:text-3xl text-center text-foreground mb-12">
             Qual é a sua situação agora?
           </h2>
-          
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             <PathCard
               title="Estou em recuperação"
               description="Construindo sobriedade dia após dia. O caminho da consistência."
               href="/trilhas/recuperacao"
-              icon={<RefreshCw size={28} />}
+              icon={<Shield size={28} />}
             />
             <PathCard
               title="Hoje bateu vontade de beber"
               description="A fissura está aqui agora. Ação imediata para atravessar."
               href="/trilhas/vontade-hoje"
-              icon={<Flame size={28} />}
+              icon={<Zap size={28} />}
             />
             <PathCard
               title="Sou familiar—proteger casa"
               description="Vive com quem bebe. Limites e proteção sem guerra."
               href="/trilhas/familiar"
-              icon={<Heart size={28} />}
+              icon={<Home size={28} />}
             />
           </div>
         </div>
       </section>
-
       <div className="section-divider" />
-
       {/* Protocols Section — ímpar */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
@@ -93,7 +84,6 @@ const Index = () => {
               <ArrowRight size={16} />
             </Link>
           </div>
-          
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <ProtocolCard
               title="Protocolo Escudo—72h"
@@ -112,9 +102,7 @@ const Index = () => {
           </div>
         </div>
       </section>
-
       <div className="section-divider" />
-
       {/* Recent Articles Section — par */}
       <section className="py-16 md:py-24 section-alt">
         <div className="container mx-auto px-4">
@@ -132,7 +120,6 @@ const Index = () => {
               <ArrowRight size={16} />
             </Link>
           </div>
-          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {recentPosts.map((post) => (
               <BlogCard key={post.id} post={post} />
@@ -140,9 +127,7 @@ const Index = () => {
           </div>
         </div>
       </section>
-
       <div className="section-divider" />
-
       {/* Newsletter Section — ímpar */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
@@ -160,5 +145,4 @@ const Index = () => {
     </Layout>
   );
 };
-
 export default Index;
