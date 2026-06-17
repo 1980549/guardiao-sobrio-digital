@@ -105,3 +105,15 @@ Header ganha botão **"Abrir App"**. Dentro de `/app/*`, layout próprio com bot
 - Disclaimer no rodapé + banner em SOS e checklist
 - CVV 188 e SAMU 192 visíveis no SOS
 - Tom de trincheira, sem linguagem religiosa ou de 12 passos
+
+- ## Atualizacoes de UI/UX — 17/06/2026
+
+**Correcoes aplicadas diretamente no codigo:**
+
+- `src/pages/Produtos.tsx` — precos reais (R$47 / R$39,90 mes / R$997 mes), CTAs diretos substituindo "Consultar informacoes", bloco de preco visivel por produto
+- `src/pages/Sobre.tsx` — ancora humana: nome Luis Vanzer Goncalves + link @luisvanzer TikTok, bloco trincheira com frase dos 60 dias
+- `src/components/Footer.tsx` — banner de emergencia no topo: Shield icon + link direto para /protocolos/escudo-72h
+- `src/pages/Index.tsx` — icones dos PathCards substituidos por Shield (recuperacao) / Zap (vontade hoje) / Home (familiar)
+- `src/pages/ComeceAqui.tsx` — badges 72h/24h no Passo 2 para diferenciar protocolos, NewsletterCapture no Passo 3
+
+**Status:** aguardando rebuild do Lovable para refletir no site publicado.
