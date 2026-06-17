@@ -1,0 +1,15 @@
+{
+  "name": "Guardião Sóbrio",
+  "short_name": "GS",
+  "description": "Estrutura diária de proteção da sobriedade: Espelho, Tática e Escudo.",
+  "start_url": "/app",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0F172A",
+  "theme_color": "#0F172A",
+  "lang": "pt-BR",
+  "icons": [
+    { "src": "/placeholder.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
