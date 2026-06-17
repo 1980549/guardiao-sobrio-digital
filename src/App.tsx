@@ -15,6 +15,14 @@ import Produtos from "./pages/Produtos";
 import Sobre from "./pages/Sobre";
 import Contato from "./pages/Contato";
 import NotFound from "./pages/NotFound";
+import Onboarding from "./pages/Onboarding";
+import { AppLayout } from "./app/AppLayout";
+import Hoje from "./pages/app/Hoje";
+import Espelho from "./pages/app/Espelho";
+import Tatica from "./pages/app/Tatica";
+import Escudo from "./pages/app/Escudo";
+import SOS from "./pages/app/SOS";
+import Familiar from "./pages/app/Familiar";
 
 const queryClient = new QueryClient();
 
@@ -36,6 +44,15 @@ const App = () => (
           <Route path="/produtos" element={<Produtos />} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="/contato" element={<Contato />} />
+          <Route path="/onboarding" element={<Onboarding />} />
+          <Route path="/app" element={<AppLayout />}>
+            <Route index element={<Hoje />} />
+            <Route path="espelho" element={<Espelho />} />
+            <Route path="tatica" element={<Tatica />} />
+            <Route path="escudo" element={<Escudo />} />
+            <Route path="familiar" element={<Familiar />} />
+            <Route path="sos" element={<SOS />} />
+          </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
