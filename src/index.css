@@ -164,12 +164,12 @@
   }
 
   .section-alt {
-    background-color: hsl(214 45% 13%);
+    background-color: #141312;
   }
 
   .section-divider {
     height: 1px;
     width: 100%;
-    background-color: rgba(217, 119, 6, 0.15);
+    background-color: rgba(255, 255, 255, 0.08);
   }
 }
