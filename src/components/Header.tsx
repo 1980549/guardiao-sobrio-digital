@@ -82,6 +82,13 @@ export const Header = () => {
                 {item.label}
               </Link>
             ))}
+            <Link
+              to="/app"
+              onClick={() => setIsOpen(false)}
+              className="tactical-button text-center mt-2"
+            >
+              Abrir App
+            </Link>
           </nav>
         </div>
       )}
