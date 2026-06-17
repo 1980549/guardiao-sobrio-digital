@@ -47,10 +47,10 @@ const produtos = [
 const Produtos = () => {
   return (
     <Layout>
+      {/* Header — ímpar */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
-          {/* Header */}
-          <div className="max-w-3xl mx-auto text-center mb-16">
+          <div className="max-w-3xl mx-auto text-center">
             <ShieldIcon size="lg" className="mx-auto mb-6" />
             <h1 className="font-display text-4xl md:text-5xl text-foreground mb-6">
               Produtos
@@ -60,9 +60,15 @@ const Produtos = () => {
               para dar suporte prático—sem promessas vazias, sem teatro.
             </p>
           </div>
+        </div>
+      </section>
 
-          {/* Products Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-16">
+      <div className="section-divider" />
+
+      {/* Products Grid — par */}
+      <section className="py-16 md:py-24 section-alt">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {produtos.map((produto) => (
               <div key={produto.id} className="tactical-card flex flex-col h-full">
                 <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-6">
@@ -93,10 +99,16 @@ const Produtos = () => {
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Info Box */}
+      <div className="section-divider" />
+
+      {/* Info Box & Disclaimer — ímpar */}
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
-            <div className="tactical-card text-center">
+            <div className="tactical-card text-center mb-8">
               <p className="text-muted-foreground mb-2">
                 <strong className="text-foreground">Detalhes e preço:</strong> consultar informações de produto.
               </p>
@@ -105,8 +117,7 @@ const Produtos = () => {
               </p>
             </div>
 
-            {/* Disclaimer */}
-            <div className="alert-box mt-8">
+            <div className="alert-box">
               <div className="flex items-start gap-3">
                 <AlertTriangle size={20} className="text-destructive flex-shrink-0 mt-0.5" />
                 <p className="text-sm text-muted-foreground">

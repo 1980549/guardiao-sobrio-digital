@@ -6,10 +6,10 @@ import { ShieldIcon } from "@/components/ShieldIcon";
 const Protocolos = () => {
   return (
     <Layout>
+      {/* Header — ímpar */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
-          {/* Header */}
-          <div className="max-w-3xl mx-auto text-center mb-16">
+          <div className="max-w-3xl mx-auto text-center">
             <ShieldIcon size="lg" className="mx-auto mb-6" />
             <h1 className="font-display text-4xl md:text-5xl text-foreground mb-6">
               Protocolos de Proteção
@@ -19,9 +19,15 @@ const Protocolos = () => {
               conjunto de ações claras. O caminho seguro é executar — não negociar.
             </p>
           </div>
+        </div>
+      </section>
 
-          {/* Protocol Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
+      <div className="section-divider" />
+
+      {/* Protocol Cards — par */}
+      <section className="py-16 md:py-24 section-alt">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <ProtocolCard
               title="Protocolo Escudo—72h"
               description="As primeiras 72 horas são o campo minado. Este protocolo é para quem está parando de beber e precisa atravessar a fase mais intensa da vontade."
@@ -37,8 +43,14 @@ const Protocolos = () => {
               icon="users"
             />
           </div>
+        </div>
+      </section>
 
-          {/* Info Section */}
+      <div className="section-divider" />
+
+      {/* Info Section — ímpar */}
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <div className="alert-box">
               <p className="text-sm text-muted-foreground">

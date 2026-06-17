@@ -13,7 +13,7 @@ const Index = () => {
 
   return (
     <Layout>
-      {/* Hero Section */}
+      {/* Hero Section — ímpar */}
       <section className="hero-gradient py-20 md:py-32">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
@@ -42,8 +42,10 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Path Cards Section */}
-      <section className="py-16 md:py-24 bg-card">
+      <div className="section-divider" />
+
+      {/* Path Cards Section — par */}
+      <section className="py-16 md:py-24 section-alt">
         <div className="container mx-auto px-4">
           <h2 className="font-display text-2xl md:text-3xl text-center text-foreground mb-12">
             Qual é a sua situação agora?
@@ -72,7 +74,9 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Protocols Section */}
+      <div className="section-divider" />
+
+      {/* Protocols Section — ímpar */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
@@ -109,8 +113,10 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Recent Articles Section */}
-      <section className="py-16 md:py-24 bg-card">
+      <div className="section-divider" />
+
+      {/* Recent Articles Section — par */}
+      <section className="py-16 md:py-24 section-alt">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
             <div>
@@ -135,7 +141,9 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Newsletter Section */}
+      <div className="section-divider" />
+
+      {/* Newsletter Section — ímpar */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
