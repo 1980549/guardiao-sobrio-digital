@@ -1,158 +1,166 @@
-import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
-import { ShieldIcon } from "@/components/ShieldIcon";
-import { NewsletterCapture } from "@/components/NewsletterCapture";
+import { Link } from "react-router-dom";
 import {
+  Smartphone,
+  Shield,
+  RefreshCw,
+  Flame,
+  BarChart2,
+  Bell,
   ArrowRight,
-  BookOpen,
-  Target,
-  ShieldCheck,
-  Heart,
-  LifeBuoy,
-  AlertTriangle,
   Construction,
+  Check,
 } from "lucide-react";
-
-const modules = [
-  {
-    icon: BookOpen,
-    title: "Espelho",
-    desc: "Diário diário de 3 minutos: vontade, gatilhos, vitória do dia.",
-  },
-  {
-    icon: Target,
-    title: "Tática",
-    desc: "Hábitos âncora e missões semanais para construir consistência.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Escudo",
-    desc: "Mapa de gatilhos pessoais e contramedidas pré-definidas.",
-  },
-  {
-    icon: Heart,
-    title: "Família",
-    desc: "Trilha paralela para quem protege a casa de quem ainda bebe.",
-  },
-  {
-    icon: LifeBuoy,
-    title: "SOS",
-    desc: "Protocolo de emergência em 2 toques. Sempre acessível.",
-  },
-];
+import { useState } from "react";
 
 const AppLanding = () => {
+  const [submitted, setSubmitted] = useState(false);
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) setSubmitted(true);
+  };
+
   return (
     <Layout>
-      {/* Hero */}
-      <section className="py-20 md:py-28">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <ShieldIcon size="lg" className="mx-auto mb-6" />
-            <span className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-primary border border-primary/40 rounded-full px-3 py-1 mb-6">
-              <Construction size={14} /> Acesso antecipado · em construção
-            </span>
-            <h1 className="font-display text-4xl md:text-5xl text-foreground mb-6">
-              O App é o seu posto de comando diário.
-            </h1>
-            <p className="text-lg text-muted-foreground">
-              Não é mais um app de motivação. É a aplicação prática dos protocolos
-              do Guardião Sóbrio — um lugar para registrar, executar e proteger,
-              dia após dia.
-            </p>
-          </div>
+      <div className="max-w-2xl mx-auto px-6 py-20">
+
+        {/* Badge */}
+        <div className="inline-flex items-center gap-2 text-xs font-body uppercase tracking-widest text-muted-foreground border border-border rounded-full px-4 py-2 mb-10">
+          <Construction size={12} />
+          Em desenvolvimento
         </div>
-      </section>
 
-      <div className="section-divider" />
+        {/* Hero */}
+        <h1 className="font-display text-4xl md:text-5xl text-foreground leading-tight mb-5">
+          O app ainda não está pronto.
+          <br />
+          <span className="text-primary">Isso é intencional.</span>
+        </h1>
+        <p className="text-muted-foreground font-body text-base leading-relaxed mb-10 max-w-prose">
+          Não vamos lançar um app incompleto só para ter algo para mostrar. O Guardião Sóbrio
+          chega quando estiver funcional, testado e honesto. Enquanto isso, o site tem tudo
+          que você precisa.
+        </p>
 
-      {/* Módulos */}
-      <section className="py-16 md:py-24 section-alt">
-        <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="font-display text-2xl md:text-3xl text-foreground mb-3">
-                Cinco módulos. Um sistema.
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Cada módulo cobre uma frente: registro, hábito, defesa, família e crise.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {modules.map((m) => (
-                <div key={m.title} className="tactical-card">
-                  <div className="w-12 h-12 rounded bg-primary/10 flex items-center justify-center mb-4">
-                    <m.icon size={22} className="text-primary" />
-                  </div>
-                  <h3 className="font-display text-xl text-foreground mb-2">{m.title}</h3>
-                  <p className="text-sm text-muted-foreground">{m.desc}</p>
+        {/* O que o app vai ter */}
+        <div className="tactical-card mb-10">
+          <h2 className="font-display text-2xl text-foreground mb-5">
+            O que o app vai ter
+          </h2>
+          <div className="space-y-4">
+            {[
+              {
+                icon: Shield,
+                title: "Protocolos no celular",
+                desc: "Acesso offline aos protocolos. Sem depender de sinal em crise.",
+              },
+              {
+                icon: Flame,
+                title: "Botão SOS",
+                desc: "Ação imediata quando a vontade bater. Protocolo em 1 toque.",
+              },
+              {
+                icon: BarChart2,
+                title: "Espelho diário",
+                desc: "Registro simples: como foi hoje. Sem julgamento, sem gamificação.",
+              },
+              {
+                icon: Bell,
+                title: "Notificações táticas",
+                desc: "Lembrete nos horários de maior risco. Configurável por você.",
+              },
+              {
+                icon: RefreshCw,
+                title: "Acompanhamento de jornada",
+                desc: "Dias consecutivos, padrões de risco e ciclos de recaida identificados.",
+              },
+            ].map((item) => (
+              <div key={item.title} className="flex items-start gap-3">
+                <div className="p-2 rounded bg-primary/10 text-primary flex-shrink-0 mt-0.5">
+                  <item.icon size={16} />
                 </div>
-              ))}
-            </div>
+                <div>
+                  <p className="font-body font-semibold text-foreground text-sm mb-0.5">{item.title}</p>
+                  <p className="text-sm font-body text-muted-foreground leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      </section>
 
-      <div className="section-divider" />
+        {/* CTA: lista de acesso antecipado */}
+        <div className="action-box mb-10">
+          <h2 className="font-display text-2xl text-foreground mb-2">
+            Acesso antecipado
+          </h2>
+          <p className="text-muted-foreground font-body text-sm leading-relaxed mb-5">
+            Quem entrar na lista testa primeiro, dá feedback direto e define como o app
+            evolui. Não é promoção — é colaboração real.
+          </p>
 
-      {/* Acesso antecipado */}
-      <section className="py-16 md:py-24">
-        <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto">
-            <div className="tactical-card">
-              <NewsletterCapture
-                headline="Quero acesso antecipado ao App"
-                description="Você entra na lista do acesso antecipado e recebe, antes do lançamento público, o convite e o material de preparação. Sem teatro, sem fila falsa."
-                bullets={[
-                  "Convite antes do lançamento público",
-                  "Material de preparação por e-mail",
-                  "Pode sair da lista a qualquer momento",
-                ]}
-                ctaLabel="Entrar no acesso antecipado"
-                successMessage="Você está na lista. O convite chega no seu e-mail antes do lançamento."
-                tag="app-early-access"
-                trust="Sem cobrança. Sem spam. Sem promessas vazias."
+          {submitted ? (
+            <div className="flex items-center gap-3 text-sm font-body">
+              <Check size={18} className="text-primary" />
+              <span className="text-foreground">
+                Registrado. Você será o primeiro a saber.
+              </span>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Seu melhor e-mail"
+                className="flex-1 bg-card border border-border rounded px-4 py-2.5 text-sm font-body text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 transition"
               />
-            </div>
-
-            <div className="mt-10 text-center">
-              <p className="text-sm text-muted-foreground mb-3">
-                Já é parte do acesso antecipado e quer ver o protótipo?
-              </p>
-              <Link
-                to="/app/hoje"
-                className="inline-flex items-center gap-2 text-primary hover:gap-3 transition-all text-sm font-medium"
+              <button
+                type="submit"
+                className="tactical-button whitespace-nowrap text-sm inline-flex items-center gap-2"
               >
-                Explorar protótipo (em construção)
-                <ArrowRight size={16} />
+                Garantir vaga <ArrowRight size={13} />
+              </button>
+            </form>
+          )}
+        </div>
+
+        {/* Enquanto isso */}
+        <div className="mb-16">
+          <p className="text-xs font-body uppercase tracking-widest text-muted-foreground mb-5">
+            Enquanto o app não chega
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {[
+              { to: "/protocolos/escudo-72h", text: "Protocolo Escudo—72h" },
+              { to: "/trilhas", text: "Escolher minha trilha" },
+              { to: "/produtos", text: "Protocolo Semanal gratuito" },
+              { to: "/comece-aqui", text: "Começar do zero" },
+            ].map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                className="flex items-center justify-between p-4 rounded-lg border border-border hover:border-primary/40 group transition-all"
+              >
+                <span className="text-sm font-body text-foreground group-hover:text-primary transition-colors">
+                  {item.text}
+                </span>
+                <ArrowRight size={14} className="text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
               </Link>
-              <p className="text-xs text-muted-foreground mt-2">
-                Funcionalidades incompletas. Os dados ficam apenas no seu navegador.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
-      </section>
 
-      <div className="section-divider" />
-
-      {/* Aviso */}
-      <section className="py-16 md:py-24 section-alt">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
-            <div className="alert-box flex items-start gap-3">
-              <AlertTriangle size={20} className="text-destructive flex-shrink-0 mt-0.5" />
-              <p className="text-sm text-muted-foreground">
-                <strong className="text-foreground">Aviso importante:</strong> O App é uma
-                ferramenta de apoio prático. <strong>Não substitui acompanhamento médico,
-                psicológico ou psiquiátrico.</strong> Em caso de crise, abstinência intensa
-                ou risco, procure ajuda profissional ou o serviço de emergência da sua
-                região imediatamente.
-              </p>
-            </div>
-          </div>
+        {/* Aviso */}
+        <div className="alert-box text-sm text-muted-foreground">
+          O Guardião Sóbrio não é substituto de ajuda profissional. Se você está
+          em crise, ligue <strong className="text-foreground">192 (SAMU)</strong> ou
+          procure o serviço de saúde mais próximo.
         </div>
-      </section>
+
+      </div>
     </Layout>
   );
 };

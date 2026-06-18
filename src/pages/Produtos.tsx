@@ -1,217 +1,228 @@
 import { Layout } from "@/components/Layout";
-import { NewsletterCapture } from "@/components/NewsletterCapture";
-import { Book, Users, Crown, Mail, ArrowRight, Check, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
-
-type Status = "disponivel" | "em-breve" | "lista-espera";
-
-const statusMeta: Record<Status, { label: string; color: string }> = {
-  disponivel: { label: "Disponivel agora", color: "text-primary border-primary/40 bg-primary/10" },
-  "em-breve": { label: "Em breve", color: "text-muted-foreground border-border bg-secondary" },
-  "lista-espera": { label: "Lista de espera", color: "text-foreground border-foreground/30 bg-foreground/5" },
-};
-
-const produtos = [
-  {
-    id: "ebook",
-    num: "01",
-    title: "Manual dos 90 Dias",
-    subtitle: "E-book — Protocolo do Escudo",
-    description:
-      "O guia completo para os primeiros 90 dias de sobriedade. Protocolos diarios, checklists e guias para situacoes de crise.",
-    icon: Book,
-    features: [
-      "Protocolo dia-a-dia para 90 dias",
-      "Checklists imprimiveis",
-      "Guia de situacoes de crise",
-      "Relatorios semanais de front",
-    ],
-    status: "em-breve" as Status,
-    cta: "Entrar na lista",
-    ctaHref: "/comece-aqui",
-    forWho: "Para quem esta nos primeiros 90 dias e precisa de estrutura diaria.",
-  },
-  {
-    id: "comunidade",
-    num: "02",
-    title: 'Comunidade \"A Base\"',
-    subtitle: "Suporte entre pares",
-    description:
-      "Um espaco sem gurus e sem religiao. Pessoas reais navegando o mesmo processo, com moderacao ativa.",
-    icon: Users,
-    features: [
-      "Canais por situacao (recuperacao, familia, crise)",
-      "Suporte entre pares",
-      "Encontros semanais de check-in",
-      "Moderacao ativa, sem gurus",
-    ],
-    status: "em-breve" as Status,
-    cta: "Entrar na lista",
-    ctaHref: "/comece-aqui",
-    forWho: "Para quem precisa de suporte real sem julgamento.",
-  },
-  {
-    id: "mentoria",
-    num: "03",
-    title: "Mentoria 1:1",
-    subtitle: "Acompanhamento individual",
-    description:
-      "Sessoes individuais com Luis Vanzer. Plano tatico personalizado para a sua situacao especifica.",
-    icon: Crown,
-    features: [
-      "Sessoes individuais por video",
-      "Plano tatico personalizado",
-      "Suporte por mensagem entre sessoes",
-      "Vagas limitadas por trimestre",
-    ],
-    status: "lista-espera" as Status,
-    cta: "Solicitar vaga",
-    ctaHref: "/comece-aqui",
-    forWho: "Para quem quer atencao individual e um plano feito para o seu caso.",
-  },
-];
+import {
+  BookOpen,
+  Users,
+  MessageSquare,
+  ArrowRight,
+  Check,
+  Clock,
+  Construction,
+} from "lucide-react";
 
 const Produtos = () => {
   return (
     <Layout>
+      <div className="max-w-3xl mx-auto px-6 py-20">
 
-      {/* ── HERO ─────────────────────────────────────────── */}
-      <section className="hero-gradient py-24 md:py-32">
-        <div className="container mx-auto px-4">
-          <div className="max-w-2xl">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="h-px w-12 bg-primary" />
-              <span className="text-xs font-mono tracking-[0.2em] text-primary uppercase">
-                Produtos
-              </span>
-            </div>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight mb-6">
-              Ferramentas para quem{" "}
-              <em className="text-primary not-italic">esta no processo</em>
-            </h1>
-            <p className="text-muted-foreground text-lg max-w-xl leading-relaxed">
-              Nao sao cursos de motivacao. Sao instrumentos praticos para atravessar
-              os momentos especificos que o vicio cria.
-            </p>
-          </div>
+        {/* Hero */}
+        <div className="mb-16">
+          <p className="text-xs font-body uppercase tracking-widest text-primary/70 mb-4">
+            Recursos práticos
+          </p>
+          <h1 className="font-display text-4xl md:text-5xl text-foreground leading-tight mb-5">
+            Ferramentas que funcionam
+          </h1>
+          <p className="text-muted-foreground font-body text-base max-w-prose leading-relaxed">
+            Sem títulos. Sem promessas de transformação. Conteúdo direto para quem está
+            construindo sobriedade — ou protegendo a família.
+          </p>
         </div>
-      </section>
 
-      {/* ── PRODUTOS GRID ────────────────────────────────── */}
-      <section className="py-24 section-alt">
-        <div className="container mx-auto px-4">
-
-          <div className="flex items-center gap-3 mb-14">
-            <div className="h-px w-8 bg-primary" />
-            <span className="text-xs font-mono tracking-[0.2em] text-primary uppercase">O funil</span>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {produtos.map((p) => {
-              const meta = statusMeta[p.status];
-              return (
-                <div key={p.id} className="tactical-card flex flex-col p-7">
-
-                  {/* header */}
-                  <div className="flex items-start justify-between mb-8">
-                    <div>
-                      <span className="font-mono text-xs text-muted-foreground/50 block mb-1">{p.num}</span>
-                      <div className={`inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-full border font-mono ${meta.color}`}>
-                        <Clock size={10} />
-                        {meta.label}
-                      </div>
-                    </div>
-                    <p.icon size={20} className="text-primary/40 mt-1" />
-                  </div>
-
-                  {/* content */}
-                  <div className="section-divider mb-6" />
-                  <h3 className="font-display text-2xl text-foreground mb-1 leading-tight">
-                    {p.title}
-                  </h3>
-                  <p className="text-xs font-mono text-primary/60 mb-4">{p.subtitle}</p>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-                    {p.description}
-                  </p>
-
-                  {/* features */}
-                  <ul className="space-y-2.5 mb-8 flex-1">
-                    {p.features.map((f) => (
-                      <li key={f} className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                        <Check size={13} className="text-primary mt-0.5 flex-shrink-0" />
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* for who */}
-                  <p className="text-xs text-muted-foreground/60 border-l border-border pl-3 mb-6 leading-relaxed">
-                    {p.forWho}
-                  </p>
-
-                  {/* cta */}
-                  <Link
-                    to={p.ctaHref}
-                    className="tactical-button-outline flex items-center justify-center gap-2 mt-auto"
-                  >
-                    {p.cta} <ArrowRight size={14} />
-                  </Link>
-
+        {/* ── PRODUTO 1: Protocolo Semanal (Newsletter) ─── */}
+        <div className="mb-6">
+          <p className="text-xs font-body uppercase tracking-widest text-primary/70 mb-4">
+            01 · Começar aqui
+          </p>
+          <div className="tactical-card border-primary/30 hover:border-primary/60">
+            <div className="flex items-start justify-between gap-4 mb-4">
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-body uppercase tracking-widest text-primary border border-primary/40 bg-primary/10 px-2.5 py-1 rounded-full">
+                    Gratuito
+                  </span>
                 </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ── FUNIL EXPLICADO ──────────────────────────────── */}
-      <section className="py-24">
-        <div className="container mx-auto px-4 max-w-2xl">
-          <div className="flex items-center gap-3 mb-8">
-            <div className="h-px w-8 bg-primary" />
-            <span className="text-xs font-mono tracking-[0.2em] text-primary uppercase">Como funciona</span>
-          </div>
-          <h2 className="font-display text-3xl text-foreground mb-6">
-            Cada produto serve um momento diferente
-          </h2>
-          <div className="space-y-6">
-            {[
-              { fase: "Fase 1", texto: "Manual dos 90 Dias: estrutura e protocolo para atravessar os primeiros meses." },
-              { fase: "Fase 2", texto: "Comunidade A Base: suporte continuo sem julgamento para o dia a dia da sobriedade." },
-              { fase: "Fase 3", texto: "Mentoria 1:1: para quem precisa de um plano especifico e acompanhamento direto." },
-            ].map((item) => (
-              <div key={item.fase} className="flex gap-6 items-start">
-                <span className="font-mono text-xs text-primary/60 mt-1 w-14 flex-shrink-0">{item.fase}</span>
-                <p className="text-muted-foreground text-sm leading-relaxed">{item.texto}</p>
+                <h2 className="font-display text-3xl text-foreground">
+                  Protocolo Semanal
+                </h2>
               </div>
-            ))}
+              <div className="hidden md:flex p-3 rounded-lg bg-primary/10 text-primary flex-shrink-0">
+                <MessageSquare size={28} />
+              </div>
+            </div>
+            <p className="text-muted-foreground font-body text-base leading-relaxed mb-5">
+              Um protocolo por semana. Direto na sua caixa. Sem spam. Sem teatro. Conteúdo
+              que você aplica na próxima hora, não apenas lê e esquece.
+            </p>
+            <ul className="space-y-2 mb-6">
+              {[
+                "1 missão prática por semana",
+                "Trilha separada para familiares",
+                "Aviso quando novos protocolos forem lançados",
+                "Sem conteúdo motivacional vazio",
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-2.5 text-sm font-body text-muted-foreground">
+                  <Check size={14} className="text-primary flex-shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <EmailCapture />
           </div>
-          <p className="text-xs text-muted-foreground/50 border-l border-border pl-3 mt-10 leading-relaxed">
-            Quando os produtos forem lancados, os precos e condicoes serao divulgados primeiro
-            para a lista do Protocolo Semanal.
-          </p>
         </div>
-      </section>
 
-      {/* ── NEWSLETTER ───────────────────────────────────── */}
-      <section className="py-24 section-alt">
-        <div className="container mx-auto px-4 max-w-2xl">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="h-px w-8 bg-primary" />
-            <span className="text-xs font-mono tracking-[0.2em] text-primary uppercase">Seja avisado primeiro</span>
+        {/* ── PRODUTO 2: E-book ─── */}
+        <div className="mb-6">
+          <p className="text-xs font-body uppercase tracking-widest text-primary/70 mb-4">
+            02 · Material de base
+          </p>
+          <div className="tactical-card">
+            <div className="flex items-start justify-between gap-4 mb-4">
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-body uppercase tracking-widest text-muted-foreground border border-border bg-secondary px-2.5 py-1 rounded-full">
+                    <Construction size={11} /> Em breve
+                  </span>
+                </div>
+                <h2 className="font-display text-3xl text-foreground">
+                  Manual do Guardião Sóbrio
+                </h2>
+              </div>
+              <div className="hidden md:flex p-3 rounded-lg bg-secondary text-muted-foreground flex-shrink-0">
+                <BookOpen size={28} />
+              </div>
+            </div>
+            <p className="text-muted-foreground font-body text-base leading-relaxed mb-5">
+              O guia completo de instalação do método: protocolos, frases prontas, plano de
+              recaida, rotina de base e guia para familiares. Em desenvolvimento.
+            </p>
+            <ul className="space-y-2 mb-6">
+              {[
+                "Todos os protocolos em formato imprimível",
+                "Capítulo dedicado a familiares",
+                "Plano de 90 dias estruturado",
+                "Frases prontas para situações difíceis",
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-2.5 text-sm font-body text-muted-foreground">
+                  <Check size={14} className="text-muted-foreground flex-shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <EmailCapture
+              placeholder="Avise-me quando sair"
+              cta="Quero ser avisado"
+              context="ebook"
+            />
           </div>
-          <h2 className="font-display text-3xl text-foreground mb-4">
-            Fique na lista
-          </h2>
-          <p className="text-muted-foreground mb-8">
-            Lancamentos, vagas e conteudo tatico direto na sua caixa de entrada.
-          </p>
-          <NewsletterCapture />
         </div>
-      </section>
 
+        {/* ── PRODUTO 3: Comunidade ─── */}
+        <div className="mb-6">
+          <p className="text-xs font-body uppercase tracking-widest text-primary/70 mb-4">
+            03 · Suporte contínuo
+          </p>
+          <div className="tactical-card opacity-90">
+            <div className="flex items-start justify-between gap-4 mb-4">
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-body uppercase tracking-widest text-muted-foreground border border-border bg-secondary px-2.5 py-1 rounded-full">
+                    <Construction size={11} /> Em breve
+                  </span>
+                </div>
+                <h2 className="font-display text-3xl text-foreground">
+                  Comunidade Guardião
+                </h2>
+              </div>
+              <div className="hidden md:flex p-3 rounded-lg bg-secondary text-muted-foreground flex-shrink-0">
+                <Users size={28} />
+              </div>
+            </div>
+            <p className="text-muted-foreground font-body text-base leading-relaxed mb-4">
+              Um grupo fechado para quem está no caminho. Sem júlgamento. Sem marketing.
+              Relatos reais, suporte prático e responsabilidade compartilhada.
+            </p>
+            <p className="text-sm font-body text-muted-foreground/70 mb-5">
+              Abrindo para a primeira turma com capacidade limitada.
+            </p>
+            <EmailCapture
+              placeholder="Reservar minha vaga"
+              cta="Pedir acesso"
+              context="comunidade"
+            />
+          </div>
+        </div>
+
+        {/* ── PRODUTO 4: Mentoria (futura) ─── */}
+        <div className="mb-16">
+          <p className="text-xs font-body uppercase tracking-widest text-primary/70 mb-4">
+            04 · Acompanhamento individual
+          </p>
+          <div className="tactical-card opacity-70">
+            <div className="flex items-start gap-4">
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="inline-flex items-center text-xs font-body uppercase tracking-widest text-muted-foreground border border-border bg-secondary px-2.5 py-1 rounded-full">
+                    Planejado
+                  </span>
+                </div>
+                <h2 className="font-display text-2xl text-foreground mb-2">
+                  Mentoria Individual
+                </h2>
+                <p className="text-sm text-muted-foreground font-body leading-relaxed">
+                  Acompanhamento direto para casos complexos. Vagas muito limitadas.
+                  Não é um grupo. É uma sessão por sessão, com plano individual.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Aviso */}
+        <div className="alert-box text-sm text-muted-foreground">
+          <strong className="text-foreground">Aviso:</strong> Nenhum produto ou serviço do Guardião Sóbrio
+          substitui acompanhamento médico, psicológico ou psiquiátrico. Se você ou alguém
+          precisa de ajuda profissional, procure agora. CAPS, AA, ALANON e
+          serviços de saúde são complementos, não substitutos.
+        </div>
+
+      </div>
     </Layout>
   );
 };
+
+// ── Componente interno: captura de email ────────────────────────────────
+const EmailCapture = ({
+  placeholder = "Seu melhor e-mail",
+  cta = "Entrar na lista",
+  context = "newsletter",
+}: {
+  placeholder?: string;
+  cta?: string;
+  context?: string;
+}) => (
+  <form
+    onSubmit={(e) => {
+      e.preventDefault();
+      const input = e.currentTarget.querySelector("input") as HTMLInputElement;
+      if (input?.value)
+        alert(`Email registrado com sucesso: ${input.value}`);
+    }}
+    className="flex flex-col sm:flex-row gap-3"
+  >
+    <input
+      type="email"
+      required
+      placeholder={placeholder}
+      className="flex-1 bg-secondary border border-border rounded px-4 py-2.5 text-sm font-body text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 transition"
+    />
+    <button
+      type="submit"
+      className="tactical-button whitespace-nowrap text-sm inline-flex items-center gap-2"
+    >
+      {cta} <ArrowRight size={13} />
+    </button>
+  </form>
+);
 
 export default Produtos;
