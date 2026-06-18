@@ -24,6 +24,7 @@ type Step = { icon: typeof Droplets; text: string; detail: string };
 type Trilha = {
   title: string;
   subtitle: string;
+  urgency?: "critical" | "building" | "protect";
   whereYouAre: string;
   description: string;
   icon: typeof RefreshCw;
@@ -39,6 +40,7 @@ const trilhasData: Record<string, Trilha> = {
   recuperacao: {
     title: "Estou em Recuperação",
     subtitle: "Construindo sobriedade dia após dia",
+    urgency: "building",
     whereYouAre:
       "Você não está mais na crise aguda. Está construindo a estrutura — o trabalho silencioso que ninguém aplaude e que sustenta tudo.",
     description:
@@ -47,7 +49,8 @@ const trilhasData: Record<string, Trilha> = {
     protocol: {
       title: "Protocolo Escudo—72h",
       href: "/protocolos/escudo-72h",
-      reason: "Use como base. Reaplique a estrutura sempre que sentir que a casa está afrouxando.",
+      reason:
+        "Use como base. Reaplique a estrutura sempre que sentir que a casa está afrouxando.",
     },
     articles: ["1", "3", "5", "9", "10", "12"],
     checklist: [
@@ -59,16 +62,17 @@ const trilhasData: Record<string, Trilha> = {
       "Relatório diário feito",
     ],
     nextStep: {
-      title: "Receber 1 protocolo prático por semana",
+      title: "Um protocolo prático por semana",
       description:
-        "Consistência se constrói com lembrete. Entre no Protocolo Semanal e receba 1 missão prática por semana.",
+        "Consistência se constrói com estrutura. Entre no Protocolo Semanal e receba 1 missão prática por semana — direto na sua caixa. Sem spam. Sem teatro.",
       href: "/produtos",
-      cta: "Entrar no Protocolo Semanal",
+      cta: "Quero o Protocolo Semanal",
     },
   },
   "vontade-hoje": {
     title: "Hoje Bateu Vontade de Beber",
     subtitle: "Ação imediata para atravessar",
+    urgency: "critical",
     whereYouAre:
       "A vontade está aqui, agora. Não é hora de pensar — é hora de executar. Os 3 passos abaixo são para os próximos minutos.",
     description:
@@ -77,40 +81,45 @@ const trilhasData: Record<string, Trilha> = {
     protocol: {
       title: "Protocolo Escudo—72h",
       href: "/protocolos/escudo-72h",
-      reason: "Quando os 3 passos forem executados, abra o Escudo para sustentar as próximas horas.",
+      reason:
+        "Quando os 3 passos forem executados, abra o Escudo para sustentar as próximas horas.",
     },
     articles: ["1", "6", "8", "10", "11"],
     immediateAction: {
-      title: "Ação imediata (3 minutos)",
+      title: "Ação imediata — próximos 3 minutos",
       steps: [
         {
           icon: Droplets,
           text: "3 copos d'água. Agora.",
-          detail: "Não dois. Três. A hidratação altera a química e cria 2 minutos de pausa.",
+          detail:
+            "Não dois. Três. A hidratação altera a química e cria 2 minutos de pausa.",
         },
         {
           icon: Wind,
           text: "Respiração ou frio.",
-          detail: "10 respirações profundas OU água fria no rosto por 30 segundos.",
+          detail:
+            "10 respirações profundas OU água fria no rosto por 30 segundos.",
         },
         {
           icon: Footprints,
           text: "Mude de ambiente.",
-          detail: "Levante e vá para outro cômodo. Movimento quebra o ciclo da fissura.",
+          detail:
+            "Levante e vá para outro cômodo. Movimento quebra o ciclo da fissura.",
         },
       ],
     },
     nextStep: {
-      title: "Atravessou? Estabilize as próximas 72h",
+      title: "Atravessou? Ancore as próximas 72h",
       description:
-        "Vontade isolada vira recaída quando vira rotina. Entre no Protocolo Escudo e ancore as próximas 72 horas.",
+        "Vontade isolada vira recaída quando vira rotina. Abra o Protocolo Escudo e estruture as próximas 72 horas antes que a próxima onda chegue.",
       href: "/protocolos/escudo-72h",
-      cta: "Ir para Protocolo Escudo—72h",
+      cta: "Abrir Protocolo Escudo—72h",
     },
   },
   familiar: {
     title: "Sou Familiar — Proteger a Casa",
     subtitle: "Limites sem guerra",
+    urgency: "protect",
     whereYouAre:
       "Você não é o terapeuta. Não é sua função curar. Sua função é proteger — a si, aos dependentes e à sua sanidade. Isso não é abandono. É sobrevivência.",
     description:
@@ -119,7 +128,8 @@ const trilhasData: Record<string, Trilha> = {
     protocol: {
       title: "Protocolo Perímetro—24h",
       href: "/protocolos/perimetro-24h",
-      reason: "Use nas próximas 24 horas para fechar o perímetro emocional e prático da casa.",
+      reason:
+        "Use nas próximas 24 horas para fechar o perímetro emocional e prático da casa.",
     },
     articles: ["2", "4", "7"],
     phrases: [
@@ -129,26 +139,120 @@ const trilhasData: Record<string, Trilha> = {
       "Estou aqui, mas não nessas condições.",
     ],
     nextStep: {
-      title: "Receber orientação semanal para familiares",
+      title: "Orientação semanal para familiares",
       description:
-        "Proteger a casa exige reposição. Entre no Protocolo Semanal — você recebe 1 protocolo prático por semana, com trilha específica para familiares.",
+        "Proteger a casa exige reposição. Entre no Protocolo Semanal — 1 protocolo por semana, com trilha específica para familiares. Direto na sua caixa. Sem spam.",
       href: "/produtos",
-      cta: "Entrar no Protocolo Semanal",
+      cta: "Quero o Protocolo Semanal",
     },
   },
 };
 
+// Índice de trilhas — exibido quando não há :trilhaId
+const TrilhasIndex = () => (
+  <Layout>
+    <div className="max-w-3xl mx-auto px-6 py-20">
+      {/* eyebrow */}
+      <p className="text-xs font-body uppercase tracking-widest text-primary/70 mb-3">
+        Trilhas de orientação
+      </p>
+      <h1 className="font-display text-4xl md:text-5xl text-foreground mb-4 leading-tight">
+        Qual é a sua situação{" "}
+        <em className="text-primary not-italic">agora?</em>
+      </h1>
+      <p className="text-muted-foreground font-body text-base mb-14 max-w-prose">
+        Cada trilha orienta um momento diferente. Escolha o que descreve o que você está vivendo agora.
+      </p>
+
+      <div className="grid gap-4">
+        {[
+          {
+            id: "recuperacao",
+            num: "01",
+            Icon: RefreshCw,
+            title: "Estou em Recuperação",
+            sub: "Construindo sobriedade dia após dia",
+            desc: "Para quem já saiu da crise aguda e precisa de estrutura para o dia a dia.",
+            urgencyClass: "",
+          },
+          {
+            id: "vontade-hoje",
+            num: "02",
+            Icon: Flame,
+            title: "Hoje Bateu Vontade de Beber",
+            sub: "Ação imediata",
+            desc: "Para quem está sentindo fissura agora e precisa de protocolo para os próximos minutos.",
+            urgencyClass: "border-destructive/40 hover:border-destructive/70",
+          },
+          {
+            id: "familiar",
+            num: "03",
+            Icon: Heart,
+            title: "Sou Familiar — Proteger a Casa",
+            sub: "Limites sem guerra",
+            desc: "Para cônjuges, pais e filhos adultos que convivem com alguém que bebe.",
+            urgencyClass: "",
+          },
+        ].map((t) => (
+          <Link
+            key={t.id}
+            to={`/trilhas/${t.id}`}
+            className={`tactical-card flex items-start gap-5 group ${
+              t.urgencyClass ||
+              "hover:border-primary/40"
+            }`}
+          >
+            <div className="mt-1 p-2 rounded bg-primary/10 text-primary flex-shrink-0">
+              <t.Icon size={22} />
+            </div>
+            <div className="flex-1">
+              <div className="flex items-center gap-2 mb-1">
+                <span className="text-xs font-body text-muted-foreground tracking-widest">
+                  {t.num}
+                </span>
+                <span className="text-xs font-body text-muted-foreground">·</span>
+                <span className="text-xs font-body text-muted-foreground">{t.sub}</span>
+              </div>
+              <h2 className="font-display text-xl text-foreground mb-1 group-hover:text-primary transition-colors">
+                {t.title}
+              </h2>
+              <p className="text-sm text-muted-foreground font-body leading-relaxed">
+                {t.desc}
+              </p>
+            </div>
+            <ArrowRight
+              size={18}
+              className="mt-1 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all flex-shrink-0"
+            />
+          </Link>
+        ))}
+      </div>
+
+      {/* aviso */}
+      <div className="alert-box mt-12 text-sm text-muted-foreground">
+        <strong className="text-foreground">Aviso:</strong> Este conteúdo é orientação prática baseada em experiência.
+        Não substitui médico, psicólogo ou psiquiatra. Em emergência, ligue{" "}
+        <strong>192 (SAMU)</strong>.
+      </div>
+    </div>
+  </Layout>
+);
+
 const Trilhas = () => {
   const { trilhaId } = useParams<{ trilhaId: string }>();
+
+  // Sem parâmetro: mostra o índice das trilhas
+  if (!trilhaId) return <TrilhasIndex />;
+
   const trilha = trilhasData[trilhaId ?? ""];
 
   if (!trilha) {
     return (
       <Layout>
-        <div className="py-16 md:py-24 container mx-auto px-4 text-center">
-          <h1 className="font-display text-4xl text-foreground mb-4">Trilha não encontrada</h1>
-          <Link to="/" className="text-primary hover:underline">
-            Voltar para o início
+        <div className="max-w-3xl mx-auto px-6 py-20 text-center">
+          <h1 className="font-display text-3xl text-foreground mb-6">Trilha não encontrada</h1>
+          <Link to="/trilhas" className="tactical-button inline-flex items-center gap-2">
+            <ArrowLeft size={16} /> Ver todas as trilhas
           </Link>
         </div>
       </Layout>
@@ -156,192 +260,198 @@ const Trilhas = () => {
   }
 
   const Icon = trilha.icon;
-  const filteredPosts = blogPosts.filter((post) => trilha.articles.includes(post.id));
+
+  const urgencyBadge =
+    trilha.urgency === "critical"
+      ? { label: "Ação imediata", cls: "text-destructive border-destructive/40 bg-destructive/10" }
+      : trilha.urgency === "protect"
+      ? { label: "Proteger a casa", cls: "text-primary border-primary/40 bg-primary/10" }
+      : { label: "Construção diária", cls: "text-muted-foreground border-border bg-secondary" };
+
+  const filteredPosts = blogPosts.filter((post) =>
+    trilha.articles.includes(post.id)
+  );
 
   return (
     <Layout>
-      <section className="py-16 md:py-24">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <Link
-              to="/"
-              className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8 transition-colors"
+      <div className="max-w-3xl mx-auto px-6 py-12">
+        {/* Back */}
+        <Link
+          to="/trilhas"
+          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-10 font-body"
+        >
+          <ArrowLeft size={14} /> Todas as trilhas
+        </Link>
+
+        {/* Header */}
+        <div className="mb-12">
+          <div className="flex items-center gap-3 mb-4">
+            <span
+              className={`inline-flex items-center gap-1.5 text-xs font-body uppercase tracking-widest px-3 py-1 rounded-full border ${
+                urgencyBadge.cls
+              }`}
             >
-              <ArrowLeft size={16} />
-              Voltar para o início
+              <Icon size={12} />
+              {urgencyBadge.label}
+            </span>
+          </div>
+          <h1 className="font-display text-4xl md:text-5xl text-foreground leading-tight mb-3">
+            {trilha.title}
+          </h1>
+          <p className="text-muted-foreground font-body text-base">
+            {trilha.subtitle}
+          </p>
+        </div>
+
+        {/* Passos de orientação */}
+        <div className="space-y-8">
+
+          {/* 01 — Onde você está */}
+          <section>
+            <p className="text-xs font-body uppercase tracking-widest text-primary/70 mb-3">
+              01 · Onde você está
+            </p>
+            <div className="action-box">
+              <p className="text-base font-body text-foreground leading-relaxed">
+                {trilha.whereYouAre}
+              </p>
+            </div>
+          </section>
+
+          {/* 02 — O que fazer agora */}
+          <section>
+            <p className="text-xs font-body uppercase tracking-widest text-primary/70 mb-3">
+              02 · O que fazer agora
+            </p>
+            <h2 className="font-display text-2xl text-foreground mb-5">
+              {trilha.immediateAction?.title ?? "Ações imediatas"}
+            </h2>
+
+            {trilha.immediateAction ? (
+              <div className="space-y-4">
+                {trilha.immediateAction.steps.map((step, index) => (
+                  <div key={index} className="protocol-mission">
+                    <div className="p-2 rounded bg-primary/10 text-primary flex-shrink-0">
+                      <step.icon size={20} />
+                    </div>
+                    <div>
+                      <p className="font-body font-semibold text-foreground mb-0.5">
+                        {step.text}
+                      </p>
+                      <p className="text-sm text-muted-foreground font-body leading-relaxed">
+                        {step.detail}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : trilha.checklist ? (
+              <ul className="space-y-3">
+                {trilha.checklist.map((item) => (
+                  <li key={item} className="flex items-start gap-3 font-body text-foreground">
+                    <CheckCircle size={18} className="text-primary mt-0.5 flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            ) : trilha.phrases ? (
+              <div className="space-y-3">
+                {trilha.phrases.map((phrase) => (
+                  <blockquote
+                    key={phrase}
+                    className="border-l-2 border-primary pl-4 font-display text-lg text-foreground italic"
+                  >
+                    "{phrase}"
+                  </blockquote>
+                ))}
+              </div>
+            ) : null}
+          </section>
+
+          {/* 03 — Protocolo recomendado */}
+          <section>
+            <p className="text-xs font-body uppercase tracking-widest text-primary/70 mb-3">
+              03 · Protocolo recomendado
+            </p>
+            <Link
+              to={trilha.protocol.href}
+              className="tactical-card block group hover:border-primary/60"
+            >
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="font-display text-xl text-foreground group-hover:text-primary transition-colors">
+                  {trilha.protocol.title}
+                </h3>
+                <ArrowRight size={16} className="text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+              </div>
+              <p className="text-sm text-muted-foreground font-body leading-relaxed">
+                {trilha.protocol.reason}
+              </p>
             </Link>
+          </section>
 
-            {/* Header */}
-            <header className="text-center mb-12">
-              <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-primary/10 flex items-center justify-center">
-                <Icon size={40} className="text-primary" />
-              </div>
-              <h1 className="font-display text-3xl md:text-4xl text-foreground mb-2">
-                {trilha.title}
-              </h1>
-              <p className="text-lg text-primary mb-4">{trilha.subtitle}</p>
-              <p className="text-muted-foreground max-w-2xl mx-auto">{trilha.description}</p>
-            </header>
-
-            {/* 4 passos: orientação de crise */}
-            <div className="space-y-6 mb-16">
-              {/* 1. Onde você está */}
-              <div className="tactical-card">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <MapPin size={18} className="text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-[11px] uppercase tracking-widest text-primary mb-1">
-                      01 · Onde você está
-                    </p>
-                    <p className="text-foreground">{trilha.whereYouAre}</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* 2. O que fazer agora */}
-              <div className="tactical-card">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Zap size={18} className="text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-[11px] uppercase tracking-widest text-primary mb-1">
-                      02 · O que fazer agora
-                    </p>
-                    <p className="font-display text-lg text-foreground">
-                      {trilha.immediateAction?.title ?? "Ações imediatas"}
-                    </p>
-                  </div>
-                </div>
-
-                {trilha.immediateAction ? (
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    {trilha.immediateAction.steps.map((step, index) => (
-                      <div key={index} className="bg-secondary/40 rounded p-4">
-                        <step.icon size={28} className="text-primary mb-3" />
-                        <h3 className="font-display text-base text-foreground mb-1">
-                          {step.text}
-                        </h3>
-                        <p className="text-sm text-muted-foreground">{step.detail}</p>
-                      </div>
-                    ))}
-                  </div>
-                ) : trilha.checklist ? (
-                  <ul className="space-y-2">
-                    {trilha.checklist.map((item) => (
-                      <li
-                        key={item}
-                        className="flex items-start gap-3 text-sm text-muted-foreground"
-                      >
-                        <CheckCircle
-                          size={16}
-                          className="text-primary mt-0.5 flex-shrink-0"
-                        />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                ) : trilha.phrases ? (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    {trilha.phrases.map((phrase) => (
-                      <div
-                        key={phrase}
-                        className="bg-secondary/40 border border-border rounded p-3"
-                      >
-                        <p className="text-foreground text-sm">"{phrase}"</p>
-                      </div>
-                    ))}
-                  </div>
-                ) : null}
-              </div>
-
-              {/* 3. Protocolo recomendado */}
-              <Link to={trilha.protocol.href} className="tactical-card group block">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <ShieldLucide size={18} className="text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-[11px] uppercase tracking-widest text-primary mb-1">
-                      03 · Protocolo recomendado
-                    </p>
-                    <p className="font-display text-lg text-foreground group-hover:text-primary transition-colors">
-                      {trilha.protocol.title}
-                    </p>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      {trilha.protocol.reason}
-                    </p>
-                  </div>
-                  <ArrowRight
-                    size={20}
-                    className="text-primary group-hover:translate-x-1 transition-transform mt-2"
-                  />
-                </div>
-              </Link>
-
-              {/* 4. Próximo passo */}
-              <Link to={trilha.nextStep.href} className="tactical-card group block">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Compass size={18} className="text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-[11px] uppercase tracking-widest text-primary mb-1">
-                      04 · Próximo passo
-                    </p>
-                    <p className="font-display text-lg text-foreground group-hover:text-primary transition-colors">
-                      {trilha.nextStep.title}
-                    </p>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      {trilha.nextStep.description}
-                    </p>
-                    <span className="inline-flex items-center gap-2 text-primary text-sm font-medium mt-3 group-hover:gap-3 transition-all">
-                      {trilha.nextStep.cta}
-                      <ArrowRight size={14} />
-                    </span>
-                  </div>
-                </div>
+          {/* 04 — Próximo passo */}
+          <section>
+            <p className="text-xs font-body uppercase tracking-widest text-primary/70 mb-3">
+              04 · Próximo passo
+            </p>
+            <div className="tactical-card border-primary/20">
+              <h3 className="font-display text-2xl text-foreground mb-2">
+                {trilha.nextStep.title}
+              </h3>
+              <p className="text-muted-foreground font-body text-sm leading-relaxed mb-5">
+                {trilha.nextStep.description}
+              </p>
+              <Link
+                to={trilha.nextStep.href}
+                className="tactical-button inline-flex items-center gap-2"
+              >
+                {trilha.nextStep.cta}
+                <ArrowRight size={14} />
               </Link>
             </div>
+          </section>
 
-            {/* Suporte adicional: checklist/frases extras quando já não foram usadas em "agora" */}
-            {trilha.immediateAction && trilha.checklist && (
-              <div className="tactical-card mb-12">
-                <h2 className="font-display text-xl text-foreground mb-4">
-                  Checklist de base
-                </h2>
-                <ul className="space-y-3">
-                  {trilha.checklist.map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-center gap-3 text-muted-foreground"
-                    >
-                      <CheckCircle size={16} className="text-primary flex-shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
+          {/* Checklist extra (quando immediateAction já foi usada) */}
+          {trilha.immediateAction && trilha.checklist && (
+            <section>
+              <p className="text-xs font-body uppercase tracking-widest text-primary/70 mb-3">
+                Checklist de base
+              </p>
+              <ul className="space-y-3">
+                {trilha.checklist.map((item) => (
+                  <li key={item} className="flex items-start gap-3 font-body text-foreground">
+                    <CheckCircle size={18} className="text-primary mt-0.5 flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
 
-            {/* Articles */}
-            {filteredPosts.length > 0 && (
-              <div>
-                <h2 className="font-display text-2xl text-foreground mb-6">
-                  Artigos relacionados
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {filteredPosts.map((post) => (
-                    <BlogCard key={post.id} post={post} />
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
         </div>
-      </section>
+
+        {/* Aviso ético */}
+        <div className="alert-box mt-12 text-sm text-muted-foreground">
+          <strong className="text-foreground">Aviso:</strong> Este conteúdo é orientação prática baseada em
+          experiência. Não substitui médico, psicólogo ou psiquiatra.{" "}
+          Em caso de abstinência intensa (tremores, suor excessivo, confusão), procure ajuda médica
+          imediatamente. Emergência: <strong>192 (SAMU)</strong>.
+        </div>
+
+        {/* Artigos relacionados */}
+        {filteredPosts.length > 0 && (
+          <div className="mt-16">
+            <p className="text-xs font-body uppercase tracking-widest text-primary/70 mb-6">
+              Artigos relacionados
+            </p>
+            <div className="grid gap-4">
+              {filteredPosts.map((post) => (
+                <BlogCard key={post.id} post={post} />
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
     </Layout>
   );
 };
