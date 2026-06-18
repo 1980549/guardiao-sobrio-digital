@@ -41,19 +41,25 @@ const App = () => (
           <Route path="/protocolos" element={<Protocolos />} />
           <Route path="/protocolos/escudo-72h" element={<ProtocoloEscudo />} />
           <Route path="/protocolos/perimetro-24h" element={<ProtocoloPerimetro />} />
+          {/* Índice de trilhas — lista os 3 caminhos disponíveis */}
+          <Route path="/trilhas" element={<Trilhas />} />
+          {/* Trilha individual — recuperacao, vontade-hoje, familiar */}
           <Route path="/trilhas/:trilhaId" element={<Trilhas />} />
           <Route path="/produtos" element={<Produtos />} />
           <Route path="/sobre" element={<Sobre />} />
           <Route path="/contato" element={<Contato />} />
           <Route path="/onboarding" element={<Onboarding />} />
+          {/* App — landing de acesso antecipado */}
           <Route path="/app" element={<AppLanding />} />
-          <Route path="/app" element={<AppLayout />}>
-            <Route path="hoje" element={<Hoje />} />
-            <Route path="espelho" element={<Espelho />} />
-            <Route path="tatica" element={<Tatica />} />
-            <Route path="escudo" element={<Escudo />} />
-            <Route path="familiar" element={<Familiar />} />
-            <Route path="sos" element={<SOS />} />
+          <Route path="/app/dashboard" element={<AppLanding />}>
+            <Route element={<AppLayout />}>
+              <Route path="hoje" element={<Hoje />} />
+              <Route path="espelho" element={<Espelho />} />
+              <Route path="tatica" element={<Tatica />} />
+              <Route path="escudo" element={<Escudo />} />
+              <Route path="sos" element={<SOS />} />
+              <Route path="familiar" element={<Familiar />} />
+            </Route>
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
