@@ -2,74 +2,119 @@ import { Link } from "react-router-dom";
 import { ShieldIcon } from "./ShieldIcon";
 import { Shield } from "lucide-react";
 
+const navLinks = [
+  { label: "Comece Aqui", href: "/comece-aqui" },
+  { label: "Protocolos", href: "/protocolos" },
+  { label: "Blog", href: "/blog" },
+  { label: "Produtos", href: "/produtos" },
+  { label: "Sobre", href: "/sobre" },
+];
+
 export const Footer = () => {
   return (
     <footer className="bg-card border-t border-border mt-auto">
-      {/* Banner de emergência */}
-      <div className="border-b border-primary/30 bg-primary/5">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 text-center">
+
+      {/* ── BANNER EMERGENCIA ───────────────────────────── */}
+      <div className="border-b border-primary/20 bg-primary/5">
+        <div className="container mx-auto px-4 py-3">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-center">
             <div className="flex items-center gap-2">
-              <Shield size={18} className="text-primary flex-shrink-0" />
-              <span className="text-sm font-display text-foreground">Em crise agora?</span>
+              <Shield size={14} className="text-primary flex-shrink-0" />
+              <span className="text-xs text-foreground font-mono">
+                Em crise agora?
+              </span>
             </div>
             <Link
               to="/protocolos/escudo-72h"
-              className="text-sm text-primary font-medium hover:underline flex items-center gap-1"
+              className="text-xs text-primary font-medium hover:underline font-mono"
             >
-              → Acesse o Protocolo Escudo—72h
+              Acesse o Protocolo Escudo-72h →
             </Link>
+            <span className="hidden sm:block text-muted-foreground/40 text-xs">|</span>
+            <span className="text-xs text-muted-foreground/60 font-mono">
+              Emergencia medica: 192 (SAMU)
+            </span>
           </div>
         </div>
       </div>
 
+      {/* ── CORPO DO FOOTER ────────────────────────────── */}
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+
+          {/* brand */}
           <div className="md:col-span-2">
-            <Link to="/" className="flex items-center gap-3 mb-4">
+            <Link to="/" className="flex items-center gap-3 mb-4 group">
               <ShieldIcon size="sm" />
-              <span className="font-display text-xl tracking-wider">Guardião Sóbrio</span>
+              <span className="font-display text-xl tracking-wider text-foreground">
+                Guardiao Sobrio
+              </span>
             </Link>
-            <p className="text-muted-foreground text-sm max-w-md">
-              Estratégia prática para atravessar a vontade de beber, proteger a minha casa
-              e construir sobriedade sem teatro.
+            <p className="text-muted-foreground text-sm max-w-xs leading-relaxed mb-4">
+              Sobriedade adulta real. Estrategia pratica para atravessar a vontade
+              de beber, proteger a casa e construir sobriedade sem teatro.
+            </p>
+            <p className="text-xs text-muted-foreground/50 leading-relaxed max-w-xs">
+              Este conteudo nao substitui psiquiatras, psicologos ou medicos.
             </p>
           </div>
 
+          {/* navegacao */}
           <div>
-            <h4 className="font-display text-lg mb-4 text-foreground">Navegação</h4>
-            <ul className="space-y-2">
-              <li><Link to="/comece-aqui" className="text-muted-foreground hover:text-primary transition-colors text-sm">Comece Aqui</Link></li>
-              <li><Link to="/blog" className="text-muted-foreground hover:text-primary transition-colors text-sm">Blog</Link></li>
-              <li><Link to="/protocolos" className="text-muted-foreground hover:text-primary transition-colors text-sm">Protocolos</Link></li>
-              <li><Link to="/produtos" className="text-muted-foreground hover:text-primary transition-colors text-sm">Produtos</Link></li>
+            <h4 className="font-mono text-xs tracking-[0.15em] text-primary uppercase mb-5">
+              Navegacao
+            </h4>
+            <ul className="space-y-3">
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    to={link.href}
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
+          {/* metodo */}
           <div>
-            <h4 className="font-display text-lg mb-4 text-foreground">Suporte</h4>
-            <ul className="space-y-2">
-              <li><Link to="/sobre" className="text-muted-foreground hover:text-primary transition-colors text-sm">Sobre</Link></li>
-              <li><Link to="/contato" className="text-muted-foreground hover:text-primary transition-colors text-sm">Contato</Link></li>
+            <h4 className="font-mono text-xs tracking-[0.15em] text-primary uppercase mb-5">
+              O Metodo
+            </h4>
+            <ul className="space-y-3">
+              {[
+                { label: "Espelho", href: "/sobre" },
+                { label: "Tatica", href: "/protocolos" },
+                { label: "Escudo", href: "/protocolos/escudo-72h" },
+              ].map((item) => (
+                <li key={item.href}>
+                  <Link
+                    to={item.href}
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
+
         </div>
-        {/* Disclaimer */}
-        <div className="border-t border-border pt-8">
-          <div className="alert-box mb-6">
-            <p className="text-muted-foreground text-xs leading-relaxed">
-              <strong className="text-foreground">Aviso importante:</strong> O Guardião Sóbrio oferece orientação e suporte à sobriedade,
-              baseada em experiência prática. <strong>Não substitui acompanhamento médico, psicológico ou psiquiátrico.</strong> Em caso de crise,
-              risco, abstinência intensa ou pensamentos de se machucar, procure ajuda profissional e emergência da sua região imediatamente.
-              O termo "tático" é uma metáfora de disciplina — nunca uma promessa de cura.
-            </p>
-          </div>
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
-            <p>© {new Date().getFullYear()} Guardião Sóbrio. Todos os direitos reservados.</p>
-            <p>Construindo sobriedade com estratégia, não com promessas vazias.</p>
-          </div>
+
+        {/* ── RODAPE ────────────────────────────────── */}
+        <div className="section-divider mb-6" />
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <p className="text-xs text-muted-foreground/50 font-mono">
+            &copy; {new Date().getFullYear()} Luis Vanzer — O Guardiao Sobrio
+          </p>
+          <p className="text-xs text-muted-foreground/40 font-mono">
+            Sobriedade nao e abstinencia. E construcao.
+          </p>
         </div>
       </div>
+
     </footer>
   );
 };
