@@ -22,8 +22,11 @@ const Index = () => {
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-6 opacity-0 animate-fade-in" style={{ animationDelay: "0.2s" }}>
               A verdade difícil que devolve a sua vida e a sua família.
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto opacity-0 animate-fade-in" style={{ animationDelay: "0.3s" }}>
-              Estratégia prática para atravessar a vontade de beber, proteger a minha casa e construir sobriedade sem teatro.
+            <p className="text-lg md:text-xl text-muted-foreground mb-4 max-w-2xl mx-auto opacity-0 animate-fade-in" style={{ animationDelay: "0.3s" }}>
+              Estratégia prática para atravessar a vontade de beber, proteger a casa e construir sobriedade sem teatro.
+            </p>
+            <p className="text-sm md:text-base text-muted-foreground mb-10 max-w-2xl mx-auto opacity-0 animate-fade-in" style={{ animationDelay: "0.35s" }}>
+              Para quem está parando de beber, para quem atravessa uma vontade hoje e para quem protege a casa.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center opacity-0 animate-fade-in" style={{ animationDelay: "0.4s" }}>
               <Link to="/comece-aqui" className="tactical-button flex items-center justify-center gap-2">
@@ -131,14 +134,21 @@ const Index = () => {
       {/* Newsletter Section — ímpar */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="font-display text-2xl md:text-3xl text-foreground mb-4">
-              Receba protocolos — sem teatro
-            </h2>
-            <p className="text-muted-foreground mb-8">
-              Um e-mail por semana. Estratégias práticas direto na sua caixa de entrada.
-            </p>
-            <NewsletterCapture />
+          <div className="max-w-2xl mx-auto">
+            <div className="tactical-card">
+              <NewsletterCapture
+                headline="Protocolo Semanal — direto na sua caixa"
+                description="Um protocolo prático por semana. Curto, firme, útil. Para quem está em recuperação, atravessa uma vontade ou protege a casa."
+                bullets={[
+                  "1 protocolo prático por semana",
+                  "Linguagem firme — sem motivação vazia, sem spam",
+                  "Pode sair da lista a qualquer momento",
+                ]}
+                ctaLabel="Entrar na lista"
+                tag="home-newsletter"
+                trust="Sem cobrança · sem teatro · sair com 1 clique"
+              />
+            </div>
           </div>
         </div>
       </section>

@@ -16,6 +16,7 @@ import Sobre from "./pages/Sobre";
 import Contato from "./pages/Contato";
 import NotFound from "./pages/NotFound";
 import Onboarding from "./pages/Onboarding";
+import AppLanding from "./pages/AppLanding";
 import { AppLayout } from "./app/AppLayout";
 import Hoje from "./pages/app/Hoje";
 import Espelho from "./pages/app/Espelho";
@@ -45,8 +46,9 @@ const App = () => (
           <Route path="/sobre" element={<Sobre />} />
           <Route path="/contato" element={<Contato />} />
           <Route path="/onboarding" element={<Onboarding />} />
+          <Route path="/app" element={<AppLanding />} />
           <Route path="/app" element={<AppLayout />}>
-            <Route index element={<Hoje />} />
+            <Route path="hoje" element={<Hoje />} />
             <Route path="espelho" element={<Espelho />} />
             <Route path="tatica" element={<Tatica />} />
             <Route path="escudo" element={<Escudo />} />
