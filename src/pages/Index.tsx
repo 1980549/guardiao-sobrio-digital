@@ -3,31 +3,35 @@ import { Layout } from "@/components/Layout";
 import { ShieldIcon } from "@/components/ShieldIcon";
 import { NewsletterCapture } from "@/components/NewsletterCapture";
 import { getRecentPosts } from "@/data/blogPosts";
-import { ArrowRight, Shield, Zap, Eye, Lock } from "lucide-react";
+import { ArrowRight, Shield, Zap, Lock } from "lucide-react";
 
+// Cada card aponta para a trilha correta (rota individual)
 const pathCards = [
   {
     id: "parando",
     label: "01",
-    title: "Estou parando agora",
-    description: "Primeiras 72h, vontade intensa, abstinencia fisica. Preciso de protocolo imediato.",
-    href: "/comece-aqui",
+    title: "Estou em recuperação",
+    description:
+      "Saiu da crise aguda e está construindo estrutura. Aqui estão os recursos para manter.",
+    href: "/trilhas/recuperacao",
     icon: Shield,
   },
   {
     id: "vontade",
     label: "02",
-    title: "Tenho vontade agora",
-    description: "A vontade chegou. Nao é fraqueza — e uma onda. Ha um protocolo para isso.",
-    href: "/protocolos",
+    title: "Bateu vontade de beber agora",
+    description:
+      "Fissura presente. Não é fraqueza — é uma onda. Tem protocolo para os próximos 3 minutos.",
+    href: "/trilhas/vontade-hoje",
     icon: Zap,
   },
   {
     id: "familia",
     label: "03",
-    title: "Protejo alguem em casa",
-    description: "Voce nao e o problema. Mas pode ser parte da solucao. Comece por aqui.",
-    href: "/comece-aqui",
+    title: "Protejo alguém em casa",
+    description:
+      "Familiar de quem bebe. Não é sua função curar — mas você pode proteger a casa.",
+    href: "/trilhas/familiar",
     icon: Lock,
   },
 ];
@@ -35,15 +39,18 @@ const pathCards = [
 const pillars = [
   {
     word: "Espelho",
-    description: "Ver a realidade sem filtro. O primeiro passo e aceitar o que esta acontecendo de verdade.",
+    description:
+      "Ver a realidade sem filtro. O primeiro passo é aceitar o que está acontecendo de verdade.",
   },
   {
-    word: "Tatica",
-    description: "Protocolos praticos para atravessar os momentos criticos sem negociar com o vicio.",
+    word: "Tática",
+    description:
+      "Protocolos práticos para atravessar os momentos críticos sem negociar com o vício.",
   },
   {
     word: "Escudo",
-    description: "Construir um perimetro de protecao emocional e ambiental para os proximos dias.",
+    description:
+      "Construir um perímetro de proteção emocional e ambiental para os próximos dias.",
   },
 ];
 
@@ -53,50 +60,44 @@ const Index = () => {
   return (
     <Layout>
 
-      {/* ── HERO ─────────────────────────────────────────── */}
+      {/* ── HERO ──────────────────────────────────────── */}
       <section className="hero-gradient relative overflow-hidden min-h-[92vh] flex items-center">
-        {/* background texture overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/80 pointer-events-none" />
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl">
 
-            {/* eyebrow */}
             <div className="flex items-center gap-3 mb-8">
               <div className="h-px w-12 bg-primary" />
               <span className="text-xs font-mono tracking-[0.2em] text-primary uppercase">
-                Luis Vanzer — O Guardiao Sobrio
+                Luis Vanzer — O Guardião Sóbrio
               </span>
             </div>
 
-            {/* headline */}
             <h1 className="font-display text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight text-foreground mb-6">
-              A verdade dificil{" "}
+              A verdade difícil{" "}
               <em className="text-primary not-italic">que devolve</em>{" "}
               a sua vida.
             </h1>
 
-            {/* sub */}
             <p className="text-lg md:text-xl text-muted-foreground max-w-xl mb-4 leading-relaxed">
-              Estrategia pratica para atravessar a vontade de beber,
+              Estratégia prática para atravessar a vontade de beber,
               proteger a casa e construir sobriedade sem teatro.
             </p>
 
             <p className="text-sm text-muted-foreground/70 max-w-lg mb-10">
-              Para quem esta parando de beber, para quem atravessa uma vontade hoje
-              e para quem protege alguem em casa.
+              Para quem está em recuperação, para quem bateu vontade hoje
+              e para quem protege alguém em casa.
             </p>
 
-            {/* disclaimer */}
             <p className="text-xs text-muted-foreground/50 max-w-md mb-10 border-l border-border pl-3">
-              Este conteudo nao substitui psiquiatras, psicologos ou medicos.
-              Em emergencia medica, ligue 192 (SAMU).
+              Este conteúdo não substitui psiquiatras, psicólogos ou médicos.
+              Em emergência, ligue 192 (SAMU).
             </p>
 
-            {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-3">
               <Link to="/comece-aqui" className="tactical-button flex items-center justify-center gap-2">
-                Comece por aqui
+                Começar aqui
                 <ArrowRight size={16} />
               </Link>
               <Link to="/protocolos" className="tactical-button-outline flex items-center justify-center gap-2">
@@ -107,13 +108,12 @@ const Index = () => {
           </div>
         </div>
 
-        {/* shield watermark */}
         <div className="absolute right-0 bottom-0 opacity-[0.04] pointer-events-none select-none hidden lg:block">
           <ShieldIcon size="xl" showLetters={false} />
         </div>
       </section>
 
-      {/* ── QUAL E SUA SITUACAO ───────────────────────────── */}
+      {/* ── QUAL É SUA SITUAÇÃO ────────────────────────── */}
       <section className="py-24 section-alt">
         <div className="container mx-auto px-4">
 
@@ -123,7 +123,7 @@ const Index = () => {
               <span className="text-xs font-mono tracking-[0.2em] text-primary uppercase">Ponto de entrada</span>
             </div>
             <h2 className="font-display text-3xl md:text-4xl text-foreground">
-              Qual e a sua situacao agora?
+              Qual é a sua situação agora?
             </h2>
             <p className="text-muted-foreground mt-3 max-w-xl">
               Cada caminho tem um protocolo. Escolha o que descreve o seu momento.
@@ -151,7 +151,7 @@ const Index = () => {
                   {card.description}
                 </p>
                 <div className="flex items-center gap-1 text-xs text-primary font-medium">
-                  Acessar
+                  Acessar trilha
                   <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
                 </div>
               </Link>
@@ -160,13 +160,13 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ── TRES PILARES ──────────────────────────────────── */}
+      {/* ── TRÊS PILARES ───────────────────────────────── */}
       <section className="py-24">
         <div className="container mx-auto px-4">
 
           <div className="flex items-center gap-3 mb-14">
             <div className="h-px w-8 bg-primary" />
-            <span className="text-xs font-mono tracking-[0.2em] text-primary uppercase">O metodo</span>
+            <span className="text-xs font-mono tracking-[0.2em] text-primary uppercase">O método</span>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
@@ -188,7 +188,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ── ANCORA HUMANA ─────────────────────────────────── */}
+      {/* ── ÂNCORA HUMANA ─────────────────────────────── */}
       <section className="py-24 section-alt">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl">
@@ -197,8 +197,8 @@ const Index = () => {
               <span className="text-xs font-mono tracking-[0.2em] text-primary uppercase">Quem fala</span>
             </div>
             <blockquote className="font-display text-2xl md:text-3xl text-foreground leading-snug mb-8">
-              &ldquo;Sobriedade nao e uma conquista.
-              E uma identidade que voce escolhe todo dia.&rdquo;
+              &ldquo;Sobriedade não é uma conquista.
+              É uma identidade que você escolhe todo dia.&rdquo;
             </blockquote>
             <div className="flex items-center gap-4">
               <div className="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">
@@ -207,8 +207,8 @@ const Index = () => {
               <div>
                 <p className="text-sm font-medium text-foreground">Luis Vanzer</p>
                 <p className="text-xs text-muted-foreground">
-                  Criador de conteudo sobre sobriedade adulta real.
-                  Nao e terapeuta, nao e coach, nao e religioso.
+                  Criador de conteúdo sobre sobriedade adulta real.
+                  Não é terapeuta, não é coach, não é religioso.
                 </p>
               </div>
             </div>
@@ -216,7 +216,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ── ULTIMOS ARTIGOS ───────────────────────────────── */}
+      {/* ── ÚTIMOS ARTIGOS ────────────────────────────── */}
       {recentPosts.length > 0 && (
         <section className="py-24">
           <div className="container mx-auto px-4">
@@ -228,7 +228,7 @@ const Index = () => {
                   <span className="text-xs font-mono tracking-[0.2em] text-primary uppercase">Artigos</span>
                 </div>
                 <h2 className="font-display text-3xl md:text-4xl text-foreground">
-                  Estrategia sem promessas vazias
+                  Estratégia sem promessas vazias
                 </h2>
               </div>
               <Link
@@ -248,7 +248,7 @@ const Index = () => {
                 >
                   <div className="section-divider mb-5" />
                   <span className="text-xs font-mono text-muted-foreground/50 mb-3 block">
-                    {post.category ?? "Estrategia"}
+                    {post.category ?? "Estratégia"}
                   </span>
                   <h3 className="font-display text-lg text-foreground mb-3 leading-snug group-hover:text-primary/90 transition-colors">
                     {post.title}
@@ -273,18 +273,22 @@ const Index = () => {
         </section>
       )}
 
-      {/* ── NEWSLETTER ────────────────────────────────────── */}
+      {/* ── NEWSLETTER (MELHORADA) ──────────────────────── */}
       <section className="py-24 section-alt">
         <div className="container mx-auto px-4 max-w-2xl">
-          <div className="flex items-center gap-3 mb-6">
+          <div className="flex items-center gap-3 mb-4">
             <div className="h-px w-8 bg-primary" />
-            <span className="text-xs font-mono tracking-[0.2em] text-primary uppercase">Missoes semanais</span>
+            <span className="text-xs font-mono tracking-[0.2em] text-primary uppercase">Protocolo semanal</span>
           </div>
-          <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
-            Protocolo na sua caixa de entrada
+          <h2 className="font-display text-3xl md:text-4xl text-foreground mb-3">
+            Um protocolo por semana.
           </h2>
-          <p className="text-muted-foreground mb-8">
-            Uma missao tatica por semana. Sem motivacao vazia, sem religiao, sem julgamento.
+          <p className="text-muted-foreground mb-2">
+            Direto na sua caixa. Sem spam. Sem teatro.
+          </p>
+          <p className="text-muted-foreground/70 text-sm mb-8">
+            Conteúdo para quem está em recuperação ou protegendo alguém em casa.
+            Uma missão prática — não só para ler.
           </p>
           <NewsletterCapture />
         </div>
