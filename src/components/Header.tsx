@@ -48,7 +48,7 @@ export const Header = () => {
               to="/app"
               className="tactical-button text-sm py-2 px-4"
             >
-              Abrir App
+              Acesso antecipado
             </Link>
           </nav>
 
@@ -87,7 +87,7 @@ export const Header = () => {
               onClick={() => setIsOpen(false)}
               className="tactical-button text-center mt-2"
             >
-              Abrir App
+              Acesso antecipado
             </Link>
           </nav>
         </div>

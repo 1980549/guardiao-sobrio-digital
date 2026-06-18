@@ -6,7 +6,7 @@ import { useProfile, useHydrated } from "./useUserState";
 import { cn } from "@/lib/utils";
 
 const tabs = [
-  { to: "/app", label: "Hoje", icon: Home, end: true },
+  { to: "/app/hoje", label: "Hoje", icon: Home, end: true },
   { to: "/app/espelho", label: "Espelho", icon: BookOpen },
   { to: "/app/tatica", label: "Tática", icon: Target },
   { to: "/app/escudo", label: "Escudo", icon: ShieldCheck },
