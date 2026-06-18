@@ -1,119 +1,90 @@
-## Objetivo
+# Revisão Estratégica — Guardião Sóbrio
 
-Adaptar o site institucional atual para também ser o **app web** descrito no PRD: estrutura diária de proteção da sobriedade baseada nos 3 pilares **ESPELHO · TÁTICA · ESCUDO**, com checklist diário em <3 min, protocolo de emergência a 2 toques, diário guiado, registro de gatilhos, e trilha para familiares. Mantém o conteúdo institucional (blog, protocolos, produtos, sobre) e adiciona a camada de produto.
+Analisei a estrutura atual. Abaixo, o que preservo, o que mudo e como.
 
-## Decisões-chave
+## Diagnóstico (estado atual)
 
-- **Single codebase web** (React + Vite atual), responsivo e pronto para "instalar na tela inicial" (manifest-only PWA, sem offline real nesta fase — fica como próximo passo).
-- **Sem backend nesta fase**: dados salvos em `localStorage` (checklist diário, entradas do diário, gatilhos, perímetro semanal, onboarding, persona). Quando o usuário pedir login/sincronização, ativamos Lovable Cloud.
-- **Sem promessas de cura**: rodapé já existente + disclaimer reforçado nas telas de protocolo de emergência e checklist.
-- **Sem 12 passos / sem linguagem religiosa** no método central.
-- **Botão flutuante "SOS / Protocolo de Emergência"** acessível de qualquer tela do app (2 toques garantidos).
+**Bom — preservar:**
+- Headline da home, segmentação por situação, página Sobre, tom anti-promessa, disclaimers, estrutura `/comece-aqui`.
+- Estética Noir já corrigida (paleta carvão, dourado fosco, divisores brancos 8%).
+- Páginas de protocolos individuais (`/protocolos/escudo-72h`, `/perimetro-24h`) — conteúdo robusto.
+- Trilhas dinâmicas em `/trilhas/:trilhaId` — dados existem, só falta refinamento.
 
-## Estrutura de navegação (nova)
+**Problemas concretos:**
+1. `/produtos`: 3 cards com preços inventados (R$ 47, R$ 39,90, R$ 997) e CTA "QUERO O E-BOOK" que joga em `/contato`. Atrito alto, sem coerência com fase atual do projeto.
+2. `/protocolos`: apenas 2 cards soltos. Falta sensação de "sistema/método".
+3. `/trilhas/:id`: já é razoável, mas não tem "onde estou → o que fazer agora → próximo passo" explícito.
+4. `Header → Abrir App`: leva direto a `/app` (área incompleta) — desonesto.
+5. Newsletter: copy genérico ("Receba protocolos — sem teatro"), sem oferta concreta.
+6. Inconsistência "Guardião Sóbrio" vs "O Guardião Sóbrio".
+7. Home: protocolos e trilhas competem; faltam âncoras de conversão claras.
 
-Duas zonas no mesmo site:
+## Decisão de marca
 
-```text
-SITE (público)                APP (privado-ish, local)
-├─ /                          ├─ /app                (dashboard diário)
-├─ /blog                      ├─ /app/espelho        (diário guiado)
-├─ /protocolos                ├─ /app/tatica         (checklist diário)
-├─ /produtos                  ├─ /app/escudo         (gatilhos + perímetro)
-├─ /sobre                     ├─ /app/familiar       (trilha persona 3)
-├─ /contato                   ├─ /app/sos            (protocolo emergência)
-└─ /comece-aqui  ──► CTA "Abrir o App" ──► /onboarding ──► /app
-```
+Padronizar **"Guardião Sóbrio"** (sem artigo) em UI, navegação, footer, OG. Manter "O Guardião Sóbrio" apenas em frases narrativas longas (página Sobre, primeira pessoa).
 
-Header ganha botão **"Abrir App"**. Dentro de `/app/*`, layout próprio com bottom-nav (mobile) / sidebar (desktop): Hoje · Espelho · Tática · Escudo · SOS.
+## Mudanças por página
 
-## Telas a construir
+### 1. `/produtos` — reestruturação completa
+- Remover preços fixos (não há checkout). Reorganizar em 3 estados claros:
+  - **Disponível agora:** "Protocolo Semanal" (newsletter tática) — CTA: *Entrar na lista*.
+  - **Em construção / acesso antecipado:** E-book "Manual dos 90 Dias", Comunidade "A Base" — badge `EM BREVE`, CTA: *Quero ser avisado* (mesmo formulário, com tag de interesse).
+  - **Mentoria:** badge `LISTA DE ESPERA`, CTA: *Pedir acesso* → `/contato?produto=mentoria`.
+- Hierarquia: card destacado (Protocolo Semanal) + 3 cards complementares.
+- Substituir bloco de preço por linha de status (`Disponível` / `Em breve` / `Lista de espera`).
 
-1. **Onboarding** (`/onboarding`) — máx. 5 perguntas, entrega valor no fim:
-   - Persona (caos/primeiros dias · frágil 30-60d · familiar)
-   - Nome/apelido
-   - Data de início da sobriedade (opcional)
-   - Horário de maior risco (default 17-20h)
-   - Aceite do disclaimer
-   - Salva em `localStorage` e redireciona para `/app`.
+### 2. `/protocolos` — estrutura de método
+Dividir em 3 blocos visuais:
+- **Protocolo Principal:** Escudo—72h (card destaque).
+- **Protocolos Complementares:** Perímetro—24h + 1 novo card "Protocolo Bunker Noturno" (rotina de sono sóbrio, derivado de conteúdo já existente — link para artigo do blog até virar página própria).
+- **Em desenvolvimento:** 3 cards `EM BREVE` com nome, propósito e público (ex: Protocolo Reentrada Social 7d, Protocolo Recaída—Primeira Hora, Protocolo Família Estendida). Sem link, badge claro.
+Adicionar legenda "Para quem é / Quando usar / Duração" em cada card. Manter aviso médico.
 
-2. **Dashboard "Hoje"** (`/app`):
-   - Contador de dias (se data informada)
-   - Card "Checklist de hoje" (progresso X/5)
-   - Card "Espelho de hoje" (prompt do dia)
-   - Card "Risco previsto às HH:MM" (lembrete bunker)
-   - Botão grande **SOS** sempre visível
-   - Frase-âncora do dia
+### 3. `/trilhas/:trilhaId` — orientação de crise
+Reescrever cabeçalho com bloco fixo de 4 passos visuais:
+- **1. Onde você está** (resumo da situação)
+- **2. O que fazer agora** (1-3 ações imediatas — usa o `immediateAction` existente)
+- **3. Protocolo recomendado** (link tático)
+- **4. Próximo passo** (próxima trilha, próximo artigo, ou newsletter)
+Aplicar para `recuperacao`, `vontade-hoje`, `familiar`. Manter checklist/frases/artigos como suporte abaixo.
 
-3. **ESPELHO** (`/app/espelho`) — diário guiado:
-   - Prompt diário rotativo (pool de ~20)
-   - Textarea, salva entrada com data
-   - Histórico das últimas entradas (somente local)
+### 4. `/app` — transição honesta
+Criar página `/app` standalone (substitui rota atual) explicando:
+- O que é o app (módulos: Espelho, Tática, Escudo, SOS, Familiar).
+- Status: **acesso antecipado em construção**.
+- CTA: *Quero acesso antecipado* → newsletter com tag `app-early-access`.
+- Link discreto "explorar protótipo" → para `/app/hoje` (rota atual interna), com banner avisando que é WIP.
+Header CTA muda de "Abrir App" para **"Acesso antecipado"**.
 
-4. **TÁTICA** (`/app/tatica`) — checklist diário (5 itens fixos do PRD):
-   Sono · Água · Alimentação · Movimento · Conexão. Toggle por item, barra de progresso, "Concluir dia" registra streak.
+### 5. Newsletter — oferta concreta
+Reescrever `NewsletterCapture` + bloco da home:
+- Headline: *"Protocolo Semanal — orientação prática direto na sua caixa."*
+- Bullets curtos: 1 protocolo prático/semana · zero spam · sair com 1 clique.
+- Microcopy de confiança: "Usado por familiares, pessoas em recuperação e profissionais."
+- CTA: **Entrar na lista**.
+- Adicionar prop opcional `tag` para uso em `/produtos` e `/app` (segmentação futura).
 
-5. **ESCUDO** (`/app/escudo`):
-   - **Gatilhos**: registrar gatilho + resposta planejada (lista)
-   - **Perímetro semanal**: 5–7 regras editáveis (ex.: "não passar na Rua X", "celular fora do quarto às 22h")
+### 6. Home `/`
+- Hero: manter headline; sub adicionar microlinha "Para quem para de beber, atravessa uma vontade ou protege a casa".
+- Reordenar seções: Hero → 3 trilhas → Protocolos (com link "ver método completo") → Sobre (mini) → Newsletter → Artigos.
+- Remover repetição visual entre trilhas e protocolos.
 
-6. **SOS** (`/app/sos`) — Protocolo de Emergência, 1 tela, sem rolagem longa:
-   - Passo 1: Respira 3-3-3
-   - Passo 2: Ligar para alguém (lista de contatos salvos localmente)
-   - Passo 3: Sair do gatilho físico
-   - Passo 4: Frases-âncora rotativas
-   - Aviso CVV 188 / SAMU 192 + disclaimer.
-   - Botão flutuante global (FAB) leva aqui em 1 toque.
+### 7. Consistência de marca
+Buscar/substituir "O Guardião Sóbrio" → "Guardião Sóbrio" em Header, Footer, títulos de página, OG. Preservar nas frases narrativas em `/sobre`.
 
-7. **Familiar** (`/app/familiar`) — trilha persona 3: cards de orientação ("Apoiar sem se destruir", limites, o que não dizer, autocuidado).
+## Fora do escopo desta etapa (pendências declaradas)
+- Persistência real de e-mails (precisa Lovable Cloud) — segue mock por enquanto.
+- Páginas próprias para "Protocolo Bunker" e os 3 novos protocolos `EM BREVE`.
+- Checkout/pagamento dos produtos.
+- Conteúdo profundo dentro do `/app` (módulos seguem WIP).
 
-## Arquivos
+## Detalhes técnicos
+- Sem novas dependências.
+- Novos arquivos: `src/pages/AppLanding.tsx` (substitui index do `AppLayout` na rota `/app`, move atual para `/app/hoje` como rota nomeada).
+- `src/App.tsx`: ajustar rotas — `/app` agora renderiza `AppLanding`; rotas internas continuam em `/app/*` via `AppLayout` (mover layout para wrapper só dos filhos: `/app/hoje`, `/app/espelho` etc.).
+- `Header.tsx`: trocar label e destino do CTA para `/app` (landing).
+- `NewsletterCapture.tsx`: aceitar props `headline`, `cta`, `tag`.
+- `Produtos.tsx`, `Protocolos.tsx`, `Trilhas.tsx`, `Index.tsx`: reescrita parcial.
+- Sem alteração de design tokens (paleta atual preservada).
 
-**Novos**
-- `src/app/AppLayout.tsx` — layout com bottom-nav/sidebar + FAB SOS
-- `src/app/useUserState.ts` — hook localStorage (perfil, checklist por data, diário, gatilhos, perímetro, contatos)
-- `src/data/espelhoPrompts.ts` — pool de prompts diários
-- `src/data/ancoras.ts` — frases-âncora
-- `src/pages/Onboarding.tsx`
-- `src/pages/app/Hoje.tsx`
-- `src/pages/app/Espelho.tsx`
-- `src/pages/app/Tatica.tsx`
-- `src/pages/app/Escudo.tsx`
-- `src/pages/app/SOS.tsx`
-- `src/pages/app/Familiar.tsx`
-- `src/components/SOSButton.tsx` — FAB global dentro de /app
-- `src/components/DisclaimerBanner.tsx` — banner reforçado em SOS/checklist
-- `public/manifest.webmanifest` + tags no `index.html` (instalável)
-
-**Editados**
-- `src/App.tsx` — novas rotas `/onboarding`, `/app`, `/app/*`
-- `src/components/Header.tsx` — botão "Abrir App"
-- `src/pages/Index.tsx` e `src/pages/ComeceAqui.tsx` — CTA "Abrir o App"
-- `index.html` — manifest + theme-color + apple-touch-icon
-
-## Fora de escopo desta entrega
-
-- Login / sincronização entre dispositivos (será Lovable Cloud quando pedido)
-- Notificações push (precisa native/Capacitor)
-- Pagamento dentro do app (produtos seguem como vitrine)
-- Offline real com service worker (manifest-only por ora)
-- App nativo iOS/Android (Capacitor pode vir depois)
-
-## Brand safety (mantido em todas as telas novas)
-
-- Nenhuma promessa de cura/resultado
-- Disclaimer no rodapé + banner em SOS e checklist
-- CVV 188 e SAMU 192 visíveis no SOS
-- Tom de trincheira, sem linguagem religiosa ou de 12 passos
-
-- ## Atualizacoes de UI/UX — 17/06/2026
-
-**Correcoes aplicadas diretamente no codigo:**
-
-- `src/pages/Produtos.tsx` — precos reais (R$47 / R$39,90 mes / R$997 mes), CTAs diretos substituindo "Consultar informacoes", bloco de preco visivel por produto
-- `src/pages/Sobre.tsx` — ancora humana: nome Luis Vanzer Goncalves + link @luisvanzer TikTok, bloco trincheira com frase dos 60 dias
-- `src/components/Footer.tsx` — banner de emergencia no topo: Shield icon + link direto para /protocolos/escudo-72h
-- `src/pages/Index.tsx` — icones dos PathCards substituidos por Shield (recuperacao) / Zap (vontade hoje) / Home (familiar)
-- `src/pages/ComeceAqui.tsx` — badges 72h/24h no Passo 2 para diferenciar protocolos, NewsletterCapture no Passo 3
-
-**Status:** aguardando rebuild do Lovable para refletir no site publicado.
+Aprove para eu implementar nesta ordem: marca → newsletter → /app landing → produtos → protocolos → trilhas → home.
