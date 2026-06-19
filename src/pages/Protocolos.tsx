@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Seo } from "@/components/Seo";
 import { Layout } from "@/components/Layout";
 import { ShieldIcon } from "@/components/ShieldIcon";
 import {

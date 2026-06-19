@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Seo } from "@/components/Seo";
 import { Layout } from "@/components/Layout";
 import { BlogCard } from "@/components/BlogCard";
 import { NewsletterCapture } from "@/components/NewsletterCapture";

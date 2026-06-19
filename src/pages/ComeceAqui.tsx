@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Seo } from "@/components/Seo";
 import { Layout } from "@/components/Layout";
 import { NewsletterCapture } from "@/components/NewsletterCapture";
 import { ArrowRight, Shield, Zap, Lock, ChevronDown } from "lucide-react";
