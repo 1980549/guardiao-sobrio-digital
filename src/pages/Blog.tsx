@@ -37,8 +37,13 @@ const Blog = () => {
             {/* Search */}
             <div className="relative max-w-md">
               <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+              <label htmlFor="blog-search" className="sr-only">
+                Buscar artigos
+              </label>
               <input
-                type="text"
+                id="blog-search"
+                type="search"
+                aria-label="Buscar artigos"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Buscar artigos..."
