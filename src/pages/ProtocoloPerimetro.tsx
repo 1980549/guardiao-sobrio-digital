@@ -6,6 +6,11 @@ import { ArrowLeft, Clock, Users, AlertTriangle, Shield, MessageSquare, Home, Ph
 const ProtocoloPerimetro = () => {
   return (
     <Layout>
+      <Seo
+        title="Protocolo Perímetro 24h | Guardião Sóbrio"
+        description="Como fechar perímetro em 24 horas: ambiente, rotas e gatilhos. Transforme a casa em bunker antes da próxima vontade chegar."
+        path="/protocolos/perimetro-24h"
+      />
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">

@@ -24,6 +24,11 @@ const AppLanding = () => {
 
   return (
     <Layout>
+      <Seo
+        title="App Guardião Sóbrio | Acesso antecipado"
+        description="Acesso antecipado ao app Guardião Sóbrio: Espelho, Tática, Escudo, SOS e módulo Familiar — diretamente no seu bolso."
+        path="/app"
+      />
       <div className="max-w-2xl mx-auto px-6 py-20">
 
         {/* Badge */}

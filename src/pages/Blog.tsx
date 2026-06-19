@@ -19,6 +19,11 @@ const Blog = () => {
 
   return (
     <Layout>
+      <Seo
+        title="Blog | Guardião Sóbrio"
+        description="Artigos sobre vontade de beber, gatilhos, rotina, família e honestidade tática. Texto direto, sem promessas, focado em ação."
+        path="/blog"
+      />
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           {/* Header */}

@@ -18,6 +18,11 @@ import {
 const Protocolos = () => {
   return (
     <Layout>
+      <Seo
+        title="Protocolos táticos | Guardião Sóbrio"
+        description="Catálogo dos protocolos para crises e proteção: Escudo 72h, Perímetro 24h e protocolos complementares. Passos diretos, sem rodeio."
+        path="/protocolos"
+      />
       <div className="max-w-3xl mx-auto px-6 py-20">
 
         {/* Hero */}

@@ -59,6 +59,11 @@ const Index = () => {
 
   return (
     <Layout>
+      <Seo
+        title="Guardião Sóbrio | Estratégia prática para sobriedade"
+        description="Protocolos táticos para atravessar a vontade de beber, proteger sua casa e sustentar sobriedade — sem teatro, sem promessas vazias."
+        path="/"
+      />
 
       {/* ── HERO ──────────────────────────────────────── */}
       <section className="hero-gradient relative overflow-hidden min-h-[92vh] flex items-center">
