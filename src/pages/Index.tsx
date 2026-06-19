@@ -254,7 +254,7 @@ const Index = () => {
                     {post.title}
                   </h3>
                   <p className="text-sm text-muted-foreground line-clamp-2 mb-6">
-                    {post.excerpt}
+                    {post.summary}
                   </p>
                   <div className="flex items-center gap-1 text-xs text-primary">
                     Ler artigo <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
