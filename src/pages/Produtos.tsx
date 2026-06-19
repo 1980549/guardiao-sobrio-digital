@@ -1,3 +1,4 @@
+import { Seo } from "@/components/Seo";
 import { Layout } from "@/components/Layout";
 import { Link } from "react-router-dom";
 import {
@@ -13,6 +14,11 @@ import {
 const Produtos = () => {
   return (
     <Layout>
+      <Seo
+        title="Produtos | Guardião Sóbrio"
+        description="Newsletter Protocolo Semanal, e-book em desenvolvimento e mentoria por lista de espera. Sem promessas, sem preço inflado."
+        path="/produtos"
+      />
       <div className="max-w-3xl mx-auto px-6 py-20">
 
         {/* Hero */}

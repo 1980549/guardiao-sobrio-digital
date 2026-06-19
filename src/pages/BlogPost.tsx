@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
+import { Seo } from "@/components/Seo";
 import { NewsletterCapture } from "@/components/NewsletterCapture";
 import { getPostBySlug, categories } from "@/data/blogPosts";
 import { ArrowLeft, Clock, AlertTriangle, Zap, Calendar } from "lucide-react";
@@ -25,6 +26,22 @@ const BlogPost = () => {
 
   return (
     <Layout>
+      <Seo
+        title={`${post.title} | Guardião Sóbrio`}
+        description={post.summary.slice(0, 160)}
+        path={`/blog/${post.slug}`}
+        type="article"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: post.title,
+          description: post.summary,
+          datePublished: post.date,
+          author: { "@type": "Organization", name: "Guardião Sóbrio" },
+          publisher: { "@type": "Organization", name: "Guardião Sóbrio" },
+          mainEntityOfPage: `https://guardiao-sobrio-digital.lovable.app/blog/${post.slug}`,
+        }}
+      />
       <article className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">

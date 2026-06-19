@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Seo } from "@/components/Seo";
 import { Layout } from "@/components/Layout";
 import { ShieldIcon } from "@/components/ShieldIcon";
 import { ArrowRight, ExternalLink } from "lucide-react";
@@ -16,6 +17,11 @@ const fundamentos = [
 const Sobre = () => {
   return (
     <Layout>
+      <Seo
+        title="Sobre | Guardião Sóbrio"
+        description="A origem do Guardião Sóbrio, o posicionamento e por que este projeto existe. Sem tom de guru, sem linguagem clínica fria."
+        path="/sobre"
+      />
 
       {/* ── HERO ─────────────────────────────────────────── */}
       <section className="hero-gradient py-24 md:py-32">

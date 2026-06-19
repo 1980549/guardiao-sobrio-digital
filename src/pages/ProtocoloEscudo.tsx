@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Seo } from "@/components/Seo";
 import { Layout } from "@/components/Layout";
 import { ShieldIcon } from "@/components/ShieldIcon";
 import { ArrowLeft, Clock, Shield, AlertTriangle, Droplets, Thermometer, Footprints, Moon, MessageCircle, Heart, CheckCircle } from "lucide-react";
@@ -6,6 +7,11 @@ import { ArrowLeft, Clock, Shield, AlertTriangle, Droplets, Thermometer, Footpri
 const ProtocoloEscudo = () => {
   return (
     <Layout>
+      <Seo
+        title="Protocolo Escudo 72h | Guardião Sóbrio"
+        description="Protocolo principal para 72 horas críticas: passos para atravessar a vontade de beber sem heroísmo, com proteção real."
+        path="/protocolos/escudo-72h"
+      />
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">

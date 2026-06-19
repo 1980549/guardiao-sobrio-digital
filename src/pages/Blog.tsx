@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Seo } from "@/components/Seo";
 import { Layout } from "@/components/Layout";
 import { BlogCard } from "@/components/BlogCard";
 import { NewsletterCapture } from "@/components/NewsletterCapture";
@@ -19,6 +20,11 @@ const Blog = () => {
 
   return (
     <Layout>
+      <Seo
+        title="Blog | Guardião Sóbrio"
+        description="Artigos sobre vontade de beber, gatilhos, rotina, família e honestidade tática. Texto direto, sem promessas, focado em ação."
+        path="/blog"
+      />
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           {/* Header */}
@@ -37,8 +43,13 @@ const Blog = () => {
             {/* Search */}
             <div className="relative max-w-md">
               <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+              <label htmlFor="blog-search" className="sr-only">
+                Buscar artigos
+              </label>
               <input
-                type="text"
+                id="blog-search"
+                type="search"
+                aria-label="Buscar artigos"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Buscar artigos..."

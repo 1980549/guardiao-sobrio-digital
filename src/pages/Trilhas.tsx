@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
+import { Seo } from "@/components/Seo";
 import { BlogCard } from "@/components/BlogCard";
 import { ShieldIcon } from "@/components/ShieldIcon";
 import { blogPosts } from "@/data/blogPosts";
@@ -151,6 +152,11 @@ const trilhasData: Record<string, Trilha> = {
 // Índice de trilhas — exibido quando não há :trilhaId
 const TrilhasIndex = () => (
   <Layout>
+    <Seo
+      title="Trilhas | Guardião Sóbrio"
+      description="Três caminhos: em recuperação, vontade hoje, ou apoiando alguém. Escolha sua trilha e siga o protocolo certo para o momento."
+      path="/trilhas"
+    />
     <div className="max-w-3xl mx-auto px-6 py-20">
       {/* eyebrow */}
       <p className="text-xs font-body uppercase tracking-widest text-primary/70 mb-3">
@@ -274,8 +280,12 @@ const Trilhas = () => {
 
   return (
     <Layout>
+      <Seo
+        title={`${trilha.title} | Trilhas Guardião Sóbrio`}
+        description={trilha.subtitle}
+        path={`/trilhas/${trilhaId}`}
+      />
       <div className="max-w-3xl mx-auto px-6 py-12">
-        {/* Back */}
         <Link
           to="/trilhas"
           className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-10 font-body"

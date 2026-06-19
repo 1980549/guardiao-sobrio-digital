@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Seo } from "@/components/Seo";
 import { Layout } from "@/components/Layout";
 import { ShieldIcon } from "@/components/ShieldIcon";
 import { Send, CheckCircle, Loader2, AlertTriangle } from "lucide-react";
@@ -32,6 +33,11 @@ const Contato = () => {
 
   return (
     <Layout>
+      <Seo
+        title="Contato | Guardião Sóbrio"
+        description="Canal direto com o Guardião Sóbrio. Para dúvidas, parcerias e pedidos de mentoria por lista de espera."
+        path="/contato"
+      />
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto">

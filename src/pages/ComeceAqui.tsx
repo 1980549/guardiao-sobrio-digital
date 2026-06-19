@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Seo } from "@/components/Seo";
 import { Layout } from "@/components/Layout";
 import { NewsletterCapture } from "@/components/NewsletterCapture";
 import { ArrowRight, Shield, Zap, Lock, ChevronDown } from "lucide-react";
@@ -51,6 +52,20 @@ const ComeceAqui = () => {
 
   return (
     <Layout>
+      <Seo
+        title="Comece aqui | Guardião Sóbrio"
+        description="Três entradas para começar: em recuperação, em crise hoje, ou apoiando alguém. Escolha o caminho certo para o seu momento."
+        path="/comece-aqui"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqs.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }}
+      />
 
       {/* ── HERO ─────────────────────────────────────────── */}
       <section className="hero-gradient py-24 md:py-32">

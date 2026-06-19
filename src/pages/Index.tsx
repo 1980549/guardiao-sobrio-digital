@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Seo } from "@/components/Seo";
 import { Layout } from "@/components/Layout";
 import { ShieldIcon } from "@/components/ShieldIcon";
 import { NewsletterCapture } from "@/components/NewsletterCapture";
@@ -59,6 +60,11 @@ const Index = () => {
 
   return (
     <Layout>
+      <Seo
+        title="Guardião Sóbrio | Estratégia prática para sobriedade"
+        description="Protocolos táticos para atravessar a vontade de beber, proteger sua casa e sustentar sobriedade — sem teatro, sem promessas vazias."
+        path="/"
+      />
 
       {/* ── HERO ──────────────────────────────────────── */}
       <section className="hero-gradient relative overflow-hidden min-h-[92vh] flex items-center">
@@ -254,7 +260,7 @@ const Index = () => {
                     {post.title}
                   </h3>
                   <p className="text-sm text-muted-foreground line-clamp-2 mb-6">
-                    {post.excerpt}
+                    {post.summary}
                   </p>
                   <div className="flex items-center gap-1 text-xs text-primary">
                     Ler artigo <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />

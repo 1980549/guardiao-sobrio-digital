@@ -1,0 +1,23 @@
+# Guardião Sóbrio
+
+> Estratégia prática para sobriedade: protocolos táticos para atravessar a vontade de beber, proteger a casa e sustentar recuperação — sem promessas vazias, sem tom de guru.
+
+O site oferece trilhas para três públicos (em recuperação, em crise hoje, familiares/cônjuges), protocolos de ação rápida, e conteúdo editorial sobre sobriedade. O conteúdo é complementar a tratamento profissional, nunca substituto.
+
+## Pages
+
+- [Início](/): Apresentação da abordagem, trilhas e protocolos.
+- [Comece aqui](/comece-aqui): Ponto de partida com três entradas e FAQ.
+- [Trilhas](/trilhas): Caminhos para recuperação, vontade hoje e familiares.
+- [Protocolos](/protocolos): Catálogo dos protocolos táticos.
+- [Protocolo Escudo 72h](/protocolos/escudo-72h): Protocolo principal para 72 horas críticas.
+- [Protocolo Perímetro 24h](/protocolos/perimetro-24h): Protocolo para fechar perímetro em 24h.
+- [Blog](/blog): Artigos sobre vontade, gatilhos, rotina, família e honestidade tática.
+- [Produtos](/produtos): Newsletter Protocolo Semanal, e-book em desenvolvimento, mentoria.
+- [Sobre](/sobre): Origem, posicionamento e princípios do projeto.
+- [Contato](/contato): Canal direto.
+- [App](/app): Acesso antecipado ao app Guardião Sóbrio.
+
+## Optional
+
+- [Onboarding](/onboarding): Fluxo opcional para personalizar a experiência.
