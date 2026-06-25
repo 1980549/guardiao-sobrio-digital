@@ -76,7 +76,7 @@ const Index = () => {
             <div className="flex items-center gap-3 mb-8">
               <div className="h-px w-12 bg-primary" />
               <span className="text-xs font-mono tracking-[0.2em] text-primary uppercase">
-                Luis Vanzer — O Guardião Sóbrio
+                Guardião Sóbrio
               </span>
             </div>
 
