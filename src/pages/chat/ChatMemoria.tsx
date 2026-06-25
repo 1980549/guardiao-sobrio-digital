@@ -67,7 +67,7 @@ export default function ChatMemoria() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Seo title="Memória do Companheiro — Guardião Sóbrio" description="Veja, edite e apague o que o Companheiro aprendeu sobre você." />
+      <Seo title="Memória do Companheiro — Guardião Sóbrio" description="Veja, edite e apague o que o Companheiro aprendeu sobre você." path="/chat/memoria" />
       <header className="border-b border-border/40 px-4 py-3 flex items-center gap-3">
         <Link to="/chat" className="text-muted-foreground hover:text-foreground">
           <ArrowLeft className="h-4 w-4" />

@@ -51,7 +51,7 @@ export default function Auth() {
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
-      <Seo title="Entrar — Guardião Sóbrio" description="Acesse seu Companheiro de Apoio." />
+      <Seo title="Entrar — Guardião Sóbrio" description="Acesse seu Companheiro de Apoio." path="/auth" />
       <Card className="w-full max-w-md p-8 space-y-6">
         <div className="flex flex-col items-center gap-3">
           <ShieldIcon size="md" />

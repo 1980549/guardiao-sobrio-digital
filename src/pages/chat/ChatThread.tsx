@@ -154,7 +154,7 @@ export default function ChatThread() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <Seo title="Companheiro de Apoio — Guardião Sóbrio" description="Apoio conversacional discreto, baseado em Entrevista Motivacional e Prevenção de Recaída." />
+      <Seo title="Companheiro de Apoio — Guardião Sóbrio" description="Apoio conversacional discreto, baseado em Entrevista Motivacional e Prevenção de Recaída." path="/chat" />
 
       {/* Topbar */}
       <header className="border-b border-border/40 px-4 py-3 flex items-center gap-3">
