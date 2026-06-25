@@ -24,6 +24,12 @@ import Tatica from "./pages/app/Tatica";
 import Escudo from "./pages/app/Escudo";
 import SOS from "./pages/app/SOS";
 import Familiar from "./pages/app/Familiar";
+import Auth from "./pages/Auth";
+import ChatIndex from "./pages/chat/ChatIndex";
+import ChatThread from "./pages/chat/ChatThread";
+import ChatMemoria from "./pages/chat/ChatMemoria";
+import { ChatFloatingButton } from "./components/ChatFloatingButton";
+
 
 const queryClient = new QueryClient();
 
@@ -61,8 +67,13 @@ const App = () => (
               <Route path="familiar" element={<Familiar />} />
             </Route>
           </Route>
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/chat" element={<ChatIndex />} />
+          <Route path="/chat/memoria" element={<ChatMemoria />} />
+          <Route path="/chat/:threadId" element={<ChatThread />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <ChatFloatingButton />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
