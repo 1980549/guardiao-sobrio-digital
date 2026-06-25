@@ -29,7 +29,7 @@ import ChatIndex from "./pages/chat/ChatIndex";
 import ChatThread from "./pages/chat/ChatThread";
 import ChatMemoria from "./pages/chat/ChatMemoria";
 import { ChatFloatingButton } from "./components/ChatFloatingButton";
-import { HelmetProvider } from "react-helmet-async";
+
 
 const queryClient = new QueryClient();
 
