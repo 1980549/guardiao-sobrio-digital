@@ -14,7 +14,238 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      chat_messages: {
+        Row: {
+          content: string
+          conversation_id: string
+          created_at: string
+          id: string
+          parts: Json | null
+          role: string
+          user_id: string
+        }
+        Insert: {
+          content: string
+          conversation_id: string
+          created_at?: string
+          id?: string
+          parts?: Json | null
+          role: string
+          user_id: string
+        }
+        Update: {
+          content?: string
+          conversation_id?: string
+          created_at?: string
+          id?: string
+          parts?: Json | null
+          role?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "chat_messages_conversation_id_fkey"
+            columns: ["conversation_id"]
+            isOneToOne: false
+            referencedRelation: "conversations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      chat_profiles: {
+        Row: {
+          age_range: string | null
+          created_at: string
+          display_name: string | null
+          primary_substance: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          age_range?: string | null
+          created_at?: string
+          display_name?: string | null
+          primary_substance?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          age_range?: string | null
+          created_at?: string
+          display_name?: string | null
+          primary_substance?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      consent_records: {
+        Row: {
+          consent_type: string
+          granted: boolean
+          granted_at: string
+          id: string
+          revoked_at: string | null
+          user_id: string
+        }
+        Insert: {
+          consent_type: string
+          granted: boolean
+          granted_at?: string
+          id?: string
+          revoked_at?: string | null
+          user_id: string
+        }
+        Update: {
+          consent_type?: string
+          granted?: boolean
+          granted_at?: string
+          id?: string
+          revoked_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      conversations: {
+        Row: {
+          crisis_level: number | null
+          ended_at: string | null
+          id: string
+          outcome: string | null
+          started_at: string
+          title: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          crisis_level?: number | null
+          ended_at?: string | null
+          id?: string
+          outcome?: string | null
+          started_at?: string
+          title?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          crisis_level?: number | null
+          ended_at?: string | null
+          id?: string
+          outcome?: string | null
+          started_at?: string
+          title?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      crisis_events: {
+        Row: {
+          action_taken: string | null
+          conversation_id: string | null
+          detected_at: string
+          id: string
+          resolved: boolean | null
+          severity: string
+          user_id: string
+        }
+        Insert: {
+          action_taken?: string | null
+          conversation_id?: string | null
+          detected_at?: string
+          id?: string
+          resolved?: boolean | null
+          severity: string
+          user_id: string
+        }
+        Update: {
+          action_taken?: string | null
+          conversation_id?: string | null
+          detected_at?: string
+          id?: string
+          resolved?: boolean | null
+          severity?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "crisis_events_conversation_id_fkey"
+            columns: ["conversation_id"]
+            isOneToOne: false
+            referencedRelation: "conversations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      learned_strategies: {
+        Row: {
+          created_at: string
+          description: string
+          effectiveness_score: number | null
+          id: string
+          last_used_at: string | null
+          source: string | null
+          times_used: number | null
+          type: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          description: string
+          effectiveness_score?: number | null
+          id?: string
+          last_used_at?: string | null
+          source?: string | null
+          times_used?: number | null
+          type?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          effectiveness_score?: number | null
+          id?: string
+          last_used_at?: string | null
+          source?: string | null
+          times_used?: number | null
+          type?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      support_network: {
+        Row: {
+          can_contact: boolean | null
+          created_at: string
+          id: string
+          name: string
+          notes: string | null
+          relationship: string | null
+          source: string | null
+          user_id: string
+        }
+        Insert: {
+          can_contact?: boolean | null
+          created_at?: string
+          id?: string
+          name: string
+          notes?: string | null
+          relationship?: string | null
+          source?: string | null
+          user_id: string
+        }
+        Update: {
+          can_contact?: boolean | null
+          created_at?: string
+          id?: string
+          name?: string
+          notes?: string | null
+          relationship?: string | null
+          source?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
